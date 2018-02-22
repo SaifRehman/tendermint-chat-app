@@ -1,1 +1,1 @@
-# tendermint-chat-app
+## Getting Started
