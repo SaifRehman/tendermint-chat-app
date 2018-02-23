@@ -5,11 +5,17 @@ This is minimal chat application based on Tendermint Blockchain using Lotionjs i
 
 ### Running the blockchain
 1. Navigate to blockchain dir 
-```cd blockchain```
+```
+cd blockchain
+```
 2. Install dependencies 
-``` npm i ```
+```
+ npm i 
+```
 3. Run the Blockchain
-``` node app.js ```
+``` 
+node app.js
+```
 
 ![3](img/3.png)
 
