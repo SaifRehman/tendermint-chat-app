@@ -1,0 +1,7 @@
+
+---
+applications:
+ - name: tendermint
+   random-route: true
+   memory: 512M
+   command: node app.js
