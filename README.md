@@ -6,15 +6,15 @@ This is minimal chat application based on Tendermint Blockchain using Lotionjs i
 ### Running the blockchain
 1. Navigate to blockchain dir 
 ```
-cd blockchain
+$ cd blockchain
 ```
 2. Install dependencies 
 ```
- npm i 
+$ npm i 
 ```
 3. Run the Blockchain
 ``` 
-node app.js
+$ node app.js
 ```
 
 ![3](img/3.png)
@@ -33,19 +33,19 @@ How simple can that be?
 ## Run FrontEnd Mobile Application
 1. Navigate to frontend dir
 ```
-cd frontend
+$ cd frontend
 ```
 2. Install dependencies
 ```
-npm i
+$ npm i
 ```
 3. Install ionic cli 
 ```
-npm -g ionic cordova
+$ npm -g ionic cordova
 ```
 4. Run the app
 ```
-ionic serve
+$ ionic serve
 ```
 
 ## Screenshot of App
