@@ -15,8 +15,7 @@ function run() {
     let msgHandler = (state, tx) => {
         if (
             typeof tx.sender === 'string' &&
-            typeof tx.message === 'string' &&
-            tx.message.length <= 50
+            typeof tx.message === 'string'
         ) {
             if (tx.message !== '') {
                 state.messages.push({
