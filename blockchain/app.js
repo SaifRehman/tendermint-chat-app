@@ -11,7 +11,7 @@ let opts = {
 };
 let lotionapp = lotion(opts)
 let msgHandler = (state, tx) => {
-    if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    if (typeof (tx.sender) === 'string' && typeof (tx.message) === 'string') {
         if (tx.message !== '') {
             state.messages.push({
                 sender: tx.sender,
