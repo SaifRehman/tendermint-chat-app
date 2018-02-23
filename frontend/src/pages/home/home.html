@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      {{senderName}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="lightGreen">
+  <ng-container *ngIf="allData"> 
+  <ion-card *ngFor="let data of allData ">
+        <ion-card-header>
+          {{data.sender}}
+        </ion-card-header>
+        <ion-card-content>
+          {{data.message}}
+        </ion-card-content>
+      </ion-card>
+      </ng-container>
+</ion-content>
+<ion-footer class="chatPageFooter">
+  <ion-toolbar>
+    <ion-item>
+      <ion-label style="margin:0px;"></ion-label>
+      <div item-content style="width:100%;">
+        <ion-textarea placeholder='enter your message' [(ngModel)]="content"></ion-textarea>
+      </div>
+    </ion-item>
+    <ion-buttons right>
+      <button style="min-width:45px;" (click)="sendMessage()">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

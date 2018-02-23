@@ -1,0 +1,25 @@
+<ion-content class="login-content" padding>
+    <ion-row class="logo-row">
+      <ion-col></ion-col>
+      <ion-col width-67>
+      </ion-col>
+      <ion-col></ion-col>
+    </ion-row>
+    <div class="login-box">
+        <ion-row>
+          <ion-col>
+            <ion-list inset>
+              <ion-item>
+                <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="name" ></ion-input>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="signup-col">
+            <button ion-button class="submit-btn" full type="submit" (click)="enter()">Enter</button>
+          </ion-col>
+        </ion-row>
+        
+    </div>
+  </ion-content>
