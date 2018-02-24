@@ -41,7 +41,7 @@ $ npm i
 ```
 3. Install ionic cli 
 ```
-$ npm -g ionic cordova
+$ npm i -g ionic cordova
 ```
 4. Run the app
 ```
