@@ -4,15 +4,19 @@
 This is minimal chat application based on Tendermint Blockchain using Lotionjs in 30 lines of code!. It also includes web/mobile application built using Ionic 3.
 
 ### Running the blockchain
-1. Navigate to blockchain dir 
+1. Install Tendermint
+```
+go get -u github.com/tendermint/tendermint/cmd/tendermint
+```
+2. Navigate to blockchain dir 
 ```
 $ cd blockchain
 ```
-2. Install dependencies 
+3. Install dependencies 
 ```
 $ npm i 
 ```
-3. Run the Blockchain
+4. Run the Blockchain
 ``` 
 $ node app.js
 ```
