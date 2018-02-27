@@ -6,7 +6,7 @@ This is minimal chat application based on Tendermint Blockchain using Lotionjs i
 ### Running the blockchain
 1. Install Tendermint
 ```
-go get -u github.com/tendermint/tendermint/cmd/tendermint
+$ go get -u github.com/tendermint/tendermint/cmd/tendermint
 ```
 2. Navigate to blockchain dir 
 ```
@@ -25,8 +25,8 @@ $ node app.js
 
 Your tendermint port is 46667, and your blockchain server port is 3000
 
-3. Endpoint: http://localhost:3000/state (GET), shows current data in blockchain
-4. Endpoint: http://localhost:3000/txs (POST), post new data in blockchain
+1. Endpoint: http://localhost:3000/state (GET), shows current data in blockchain
+2. Endpoint: http://localhost:3000/txs (POST), post new data in blockchain
 
 ![4](img/4.png)
 
