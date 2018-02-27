@@ -1,7 +1,7 @@
 ## Tendermint Blockchain Chat App
 ![Tendermint](http://www.peerity.io/images/Tendermint-logo2.png)
 
-This is minimal chat application based on Tendermint Blockchain using Lotionjs in 30 lines of code!. It also includes web/mobile application built using Ionic 3.
+This is minimal chat application based on Tendermint Consensus Engine using Lotionjs in 30 lines of code!. It also includes web/mobile application built using Ionic 3.
 
 ### Running the blockchain
 1. Install Tendermint
