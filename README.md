@@ -92,6 +92,7 @@ $ docker stop containerid
 ```
 $ docker rm containerid
 ```
+
 ## Screenshot of App
 
 ![5](img/5.png)
