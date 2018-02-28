@@ -67,6 +67,31 @@ link: [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/
 2. Enable CORS 
 ![cors](img/cors.png)
 
+## Docker Support 
+1. Navigate to blockchain directory
+```
+$ cd blockchain
+```
+2. Build image from Dockerfile
+```
+$ docker build -t tendermint .
+```
+3. Run Dockerfile
+```
+$ docker run -p 3001:3001 -p 46656:46656 -p 46657:46657 -p 35597:35597 -d tendermint1:latest
+```
+4. See the running container
+```
+$ docker ps
+```
+5. Stop the container
+```
+$ docker stop containerid
+``` 
+6. Remove Container
+```
+$ docker rm containerid
+```
 ## Screenshot of App
 
 ![5](img/5.png)
