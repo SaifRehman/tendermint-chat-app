@@ -27,7 +27,7 @@ Your tendermint port is 46667, and your blockchain server port is 3000
 
 1. Endpoint: http://localhost:3000/state (GET), shows current data in blockchain
 2. Endpoint: http://localhost:3000/txs (POST), post new data in blockchain
-3. Endpoint: http://localhost:4667/ , access available Apis provided by Tendermint RPC 
+3. Endpoint: http://localhost:46657/ , access available Apis provided by Tendermint RPC 
 
 ![4](img/4.png)
 
