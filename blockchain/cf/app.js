@@ -1,8 +1,8 @@
 let lotion = require('lotion');
-let lotionPort = 3000;
+let lotionPort = process.env.PORT || 8080;
 var express = require("express"),
     app = express();
-var port = process.env.PORT || 8080;
+var port = process.env.PORT || 3000;
 app.use(express.static(__dirname + '/public'));
 let opts = {
     devMode: true,
@@ -30,10 +30,10 @@ lotionapp.listen(lotionPort).then(genesis => {
 }, err => {
     console.log(err);
 })
-app.get("/sayHello", function (request, response) {
-  var user_name = request.query.user_name;
-  response.end("Hello " + user_name + "!");
-});
-app.listen(port);
-console.log("Listening on port ", port);
-require("cf-deployment-tracker-client").track();
+// app.get("/sayHello", function (request, response) {
+//   var user_name = request.query.user_name;
+//   response.end("Hello " + user_name + "!");
+// });
+// app.listen(port);
+// console.log("Listening on port ", port);
+// require("cf-deployment-tracker-client").track();

@@ -52,6 +52,18 @@ $ npm i -g ionic cordova
 ```
 $ ionic serve
 ```
+5. App running on port 8100
+```
+http://localhost:8100
+```
+## CORS Issue Fix 
+If you face error as such 
+![error](img/error.png)
+
+1. Install "Allow-Control-Allow-Origin: *" plugin of google chrome to enable CORS
+link: [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
+2. Enable CORS 
+![cors](img/cors.png)
 
 ## Screenshot of App
 
