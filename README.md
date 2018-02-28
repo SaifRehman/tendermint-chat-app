@@ -78,7 +78,7 @@ $ docker build -t tendermint .
 ```
 3. Run Dockerfile
 ```
-$ docker run -p 3000:3000 -p 46656:46656 -p 46657:46657 -p 35597:35597 -d tendermint1:latest
+$ docker run -p 3001:3001 -p 46656:46656 -p 46657:46657 -p 35597:35597 -d tendermint:latest
 ```
 4. See the running container
 ```
