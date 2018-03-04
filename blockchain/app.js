@@ -1,5 +1,5 @@
 let lotion = require('lotion');
-let lotionPort = 3001;
+let lotionPort = 3000;
 let opts = {
     lotionPort: lotionPort,
     p2pPort: 46656,
