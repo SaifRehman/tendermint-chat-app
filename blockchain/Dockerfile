@@ -3,5 +3,5 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install
 COPY . .
-EXPOSE 3001 46656 46657 35597 
+EXPOSE 3001 46656 46657 35597 3000
 CMD [ "node", "app.js" ]
