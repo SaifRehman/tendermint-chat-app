@@ -1,6 +1,5 @@
 FROM node:latest
 COPY package*.json ./
 RUN npm install
-COPY . .
-EXPOSE 3000 46656 46657 35597
+EXPOSE 3000 46656 46657 35597 49532
 CMD [ "node", "app.js" ]
