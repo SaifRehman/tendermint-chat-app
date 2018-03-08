@@ -1,8 +1,28 @@
 var  connect  = require('lotion')
-let GCI = '25ad85c182dd6b06d5d6bdc8faa99b7a9894cb40ed27dd4542fd01535b4983dc'
-var state = connect(GCI)
-console.log(state);
+let GCI = '91d61db1dce394931297b59d584eb723b8009c40d72bb8ec8aeccf4a9ba008b1'
+async function send(){
+    return (await connect(GCI))
+}
 
+send().then(function(state){
+    var txs = async function(){
+        let result = await send ({ nonce: 0 }).then(function(data){
+            console.log(data)
+        })
+    }();
+})
+  
+// send().then(function(state){
+//     var txs = async function(){
+//         let result = await send
+//     }();
+// })
+// send().then(function(state){
+//     var txs = async function(){
+//     //    console.log(await state.count
+//     }();
+// })
+  
 // var myCallback = function(data) {
 //     console.log('got data: '+data);
 //   };
