@@ -5,7 +5,9 @@ let opts = {
     p2pPort: 46656,
     tendermintPort: 46657,
     abciPort:35597,
-    initialState: []
+    initialState: {
+        messages: []
+    }
 };
 let lotionapp = lotion(opts)
 lotionapp.listen(lotionPort).then(genesis => {

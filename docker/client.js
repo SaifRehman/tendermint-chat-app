@@ -7,7 +7,7 @@ async function send(){
 send().then(function(state){
     var txs = async function(){
         let result = await send ({ nonce: 0 }).then(function(data){
-            console.log(data)
+            console.log(data);
         })
     }();
 })
