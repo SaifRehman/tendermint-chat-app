@@ -1,9 +1,7 @@
 var  connect  = require('lotion')
-let GCI = '40afa71f8bf8fef5fcde6caed82275381963ec328934a8e49cc8b5a2cce7ba07'
-var state = await connect(GCI)
-var send = connect(GCI)
-let count =  state.message;
-console.log(count) // 0
+let GCI = '25ad85c182dd6b06d5d6bdc8faa99b7a9894cb40ed27dd4542fd01535b4983dc'
+var state = connect(GCI)
+console.log(state);
 
 // var myCallback = function(data) {
 //     console.log('got data: '+data);
