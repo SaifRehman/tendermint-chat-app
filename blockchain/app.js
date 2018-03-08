@@ -1,5 +1,4 @@
 let lotion = require('lotion');
-
 let lotionPort = 3000;
 let opts = {
     lotionPort: lotionPort,
@@ -19,7 +18,6 @@ lotionapp.use(function (state, tx) {
             });
         }
   })
-
 lotionapp.listen(lotionPort).then(genesis => {
     console.log(genesis);
 }, err => {
