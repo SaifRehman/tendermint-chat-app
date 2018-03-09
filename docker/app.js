@@ -1,6 +1,7 @@
 let shea = require('shea')
 
-let app = require('lotion')({
+let app = require('../../../lotion')({
+  tendermintPort:46657,
   initialState: { messages: [] },
 })
 
@@ -9,9 +10,9 @@ app.use((state, tx) => {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.use(shea('./public/index.html'))
-app.listen(3000).then(({ GCI }) => {
-  console.log(GCI)
+
+app.listen(3000).then(function(data){
+  console.log('data iss',data)
 })
 var http = require('http');
 var finalhandler = require('finalhandler');
