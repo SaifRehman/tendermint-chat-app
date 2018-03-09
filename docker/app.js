@@ -10,7 +10,9 @@ app.use((state, tx) => {
   }
 })
 app.use(shea('./public/index.html'))
-app.listen(3000)
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
+})
 var http = require('http');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
@@ -19,5 +21,6 @@ var server = http.createServer(function(req, res) {
   var done = finalhandler(req, res);
   serve(req, res, done);
 });
+
 
 server.listen(8000);
