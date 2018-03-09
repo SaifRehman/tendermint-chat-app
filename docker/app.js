@@ -1,6 +1,6 @@
 let shea = require('shea')
 
-let app = require('../../../lotion')({
+let app = require('lotion')({
   tendermintPort:46657,
   initialState: { messages: [] },
 })
