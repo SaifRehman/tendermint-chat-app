@@ -68,7 +68,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'http://localhost:3000/state';
+        var link = 'https://51.15.142.59:3000/state';
         var bodyObject = {};
         var bodyString = JSON.stringify(bodyObject); // Stringify payload
         return this.http.get(link, options) // ...using post request
@@ -84,7 +84,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'http://localhost:3000/txs';
+        var link = 'https://51.15.142.59:3000/txs';
         var senderName = sessionStorage.getItem('name');
         console.log(senderName);
         var bodyObject = {
