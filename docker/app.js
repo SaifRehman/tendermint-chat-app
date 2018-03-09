@@ -5,8 +5,8 @@ let app = require('../../../lotion')({
 })
 
 app.use((state, tx) => {
-  if (typeof tx.username === 'string' && typeof tx.message === 'string') {
-    state.messages.push({ sender: tx.username, message: tx.message })
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
 
