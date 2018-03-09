@@ -10,7 +10,7 @@ app.use((state, tx) => {
   }
 })
 app.use(shea('./public/index.html'))
-app.listen(3001)
+app.listen(3000)
 var http = require('http');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
