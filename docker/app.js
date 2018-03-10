@@ -1,10 +1,12 @@
 let shea = require('shea')
+let genesis = require.resolve('./genesis.json');
 
 let app = require('lotion')({
   devMode:true,
   lotionPort: 3000,
   p2pPort: 46656,
   tendermintPort: 46657,
+  peers:['51.15.142.59:46656'],
   initialState: { messages: [] },
 })
 
