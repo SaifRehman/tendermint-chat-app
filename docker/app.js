@@ -9,6 +9,9 @@ var http = require('http');
 var finalhandler = require('finalhandler');
 var serveStatic = require('serve-static');
 var serve = serveStatic("./");
+var express    = require('express');        // call express
+var expressapp        = express();                 // define our app using express
+var bodyParser = require('body-parser');
 let app = require('lotion')({
   lotioPort:3000,
   tendermintPort:46657,
@@ -23,9 +26,6 @@ let app = require('lotion')({
   app.listen(3000).then(function(data){
     console.log('data iss',data)
   })
-var express    = require('express');        // call express
-var expressapp        = express();                 // define our app using express
-var bodyParser = require('body-parser');
 expressapp.use(cors({credentials: true, origin: true}))
 expressapp.use(express.static(path.join(__dirname, 'public')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
