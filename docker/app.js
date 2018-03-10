@@ -24,12 +24,15 @@ let app = require('lotion')({
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
 var bodyParser = require('body-parser');
+expressapp.all('*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin","*");
+  res.header("Access-Control-Allow-Headers", "*");
+  next();
+ });
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
 expressapp.use(cors({credentials: true, origin: true}))
-expressapp.use(function (req, res, next) {
- res.setHeader('Access-Control-Allow-Headers', "*");
-});
+expressapp.use(express.static(path.join(__dirname, 'public')));
 var port =  8888;       
 var router = express.Router();              // get an instance of the express Router
 var request = require('request');
@@ -61,18 +64,3 @@ expressapp.post('/api/post', function(req, res) {
 
 expressapp.listen(port)
 console.log('Magic happens on port ' + port);
-
-var server = http.createServer(function(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
-  res.setHeader('Access-Control-Allow-Credentials', true); 
-      if ( req.method === 'OPTIONS' ) {
-       res.writeHead(200);
-       res.end();
-       return;
-     }
-     var done = finalhandler(req, res);
-     serve(req, res, done);
-   });
-   server.listen(8000);
