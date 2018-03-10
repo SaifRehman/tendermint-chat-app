@@ -1,3 +1,9 @@
+var https = require('https');
+var fs = require('fs');
+var sslOptions = {
+  key: fs.readFileSync('key.pem'),
+  cert: fs.readFileSync('cert.pem')
+};
 let shea = require('shea')
 var cors = require('cors')
 let genesis = require.resolve('./genesis.json');
@@ -62,5 +68,5 @@ router.post('/post', function(req, res) {
 });
 expressapp.use('/api', router);
 expressapp.use(cors())
-expressapp.listen(port);
+https.createServer(sslOptions, expressapp).listen(port)
 console.log('Magic happens on port ' + port);

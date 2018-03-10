@@ -33,6 +33,7 @@
     "get-port": "^3.2.0",
     "http-post": "^0.1.1",
     "http-proxy": "^1.8.1",
+    "https": "^1.0.0",
     "left-pad": "^1.2.0",
     "lotion": "^0.1.13",
     "minimist": "^1.2.0",
