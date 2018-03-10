@@ -41,7 +41,6 @@ var port =  8888;
 var router = express.Router();              // get an instance of the express Router
 var request = require('request');
 router.get('/get', function(req, res) {
-  
 request('http://localhost:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
         console.log(body) // Print the google web page.
@@ -70,11 +69,11 @@ router.post('/post', function(req, res) {
 expressapp.use('/api', router);
 expressapp.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://51.15.142.59:8000');
+  res.setHeader('Access-Control-Allow-Origin', '*');
   // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+  res.setHeader('Access-Control-Allow-Methods', '*');
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  res.setHeader('Access-Control-Allow-Headers', '*');
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -82,5 +81,6 @@ expressapp.use(function (req, res, next) {
   next();
 });
 expressapp.use(cors({credentials: true, origin: true}))
+expressapp.use(express.static('public'))
 https.createServer(sslOptions, expressapp).listen(port)
 console.log('Magic happens on port ' + port);
