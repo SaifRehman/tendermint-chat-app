@@ -1,4 +1,5 @@
 let shea = require('shea')
+var cors = require('cors')
 let genesis = require.resolve('./genesis.json');
 let app = require('lotion')({
   lotioPort:3000,
@@ -60,5 +61,6 @@ router.post('/post', function(req, res) {
 
 });
 expressapp.use('/api', router);
+expressapp.use(cors())
 expressapp.listen(port);
 console.log('Magic happens on port ' + port);
