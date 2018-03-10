@@ -84,7 +84,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'https://51.15.142.59:8888/api/get';
+        var link = 'https://51.15.142.59:8888/api/post';
         var senderName = sessionStorage.getItem('name');
         console.log(senderName);
         var bodyObject = {
