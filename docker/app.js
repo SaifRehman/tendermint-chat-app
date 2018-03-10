@@ -27,7 +27,7 @@ let app = require('lotion')({
   var serveStatic = require('serve-static');
   var serve = serveStatic("./");
   var server = http.createServer(function(req, res) {
-    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader("Access-Control-Allow-Origin", " http://51.15.142.59");
     var done = finalhandler(req, res);
     serve(req, res, done);
   });
