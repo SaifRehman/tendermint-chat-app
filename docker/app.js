@@ -55,6 +55,27 @@ var expressapp        = express();                 // define our app using expre
 var bodyParser = require('body-parser');
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
+expressapp.use(cors({credentials: true, origin: true}))
+expressapp.use(function (req, res, next) {
+  // Website you wish to allow to connect
+ // Website you wish to allow to connect
+ res.setHeader('Access-Control-Allow-Origin', '*');
+
+ // Request methods you wish to allow
+ res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+ // Request headers you wish to allow
+ res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
+
+// Set to true if you need the website to include cookies in the requests sent 
+
+// to the API (e.g. in case you use sessions)
+ res.setHeader('Access-Control-Allow-Credentials', true); 
+
+// Pass to next layer of middleware 
+
+// next();
+});
 var port =  8888;       
 var router = express.Router();              // get an instance of the express Router
 var request = require('request');
@@ -85,26 +106,6 @@ router.post('/post', function(req, res) {
 
 });
 expressapp.use('/api', router);
-expressapp.use(function (req, res, next) {
-  // Website you wish to allow to connect
- // Website you wish to allow to connect
- res.setHeader('Access-Control-Allow-Origin', '*');
 
- // Request methods you wish to allow
- res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
- // Request headers you wish to allow
- res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type'); 
-
-// Set to true if you need the website to include cookies in the requests sent 
-
-// to the API (e.g. in case you use sessions)
- res.setHeader('Access-Control-Allow-Credentials', true); 
-
-// Pass to next layer of middleware 
-
-// next();
-});
-expressapp.use(cors({credentials: true, origin: true}))
 expressapp.listen(port)
 console.log('Magic happens on port ' + port);
