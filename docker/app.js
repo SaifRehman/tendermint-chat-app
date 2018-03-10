@@ -1,6 +1,7 @@
 let shea = require('shea')
 
 let app = require('lotion')({
+  devMode:true,
   lotionPort: 3000,
   p2pPort: 46656,
   tendermintPort: 46657,
