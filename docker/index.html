@@ -1,0 +1,39 @@
+<form onsubmit="return sendmsg()">
+    <input type="text" id="msg" placeholder="enter msg" />
+    <button>send</button>
+  </form>
+  <div id="msgs"></div>
+  
+  <script>
+  let username = prompt('what\'s ur name ?')
+  setInterval(() => {
+    fetch('/state').then(res=>res.json()).then(state => {
+      let msgs = document.getElementById('msgs')
+      msgs.innerHTML = ''
+      state.messages.forEach(message => {
+        let usernameSpan = document.createElement('span')
+        usernameSpan.textContent = message.username + ': '
+        let msgSpan = document.createElement('span')
+        msgSpan.textContent = message.message
+        let messageContainer = document.createElement('div')
+        messageContainer.appendChild(usernameSpan)
+        messageContainer.appendChild(msgSpan)
+        msgs.appendChild(messageContainer)
+      })
+    })
+  }, 1000)
+  function sendmsg() {
+    let inp = document.getElementById('msg')
+    let msg = inp.value
+    fetch('/txs', {
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      method: 'post',
+      body: JSON.stringify({username: username, message: msg})
+    })
+    inp.value = ''
+    return false
+  }
+  </script>

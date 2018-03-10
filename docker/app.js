@@ -6,15 +6,14 @@ let app = require('lotion')({
   lotionPort: 3000,
   p2pPort: 46656,
   tendermintPort: 46657,
-  peers:['51.15.142.59:46656'],
   initialState: { messages: [] },
 })
 
 
 async function main() {
   app.use((state, tx) => {
-    if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
-      state.messages.push({ sender: tx.sender, message: tx.message })
+    if (typeof tx.username === 'string' && typeof tx.message === 'string') {
+      state.messages.push({ username: tx.username, message: tx.message })
     }
   })
   
