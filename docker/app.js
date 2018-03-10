@@ -71,7 +71,7 @@ expressapp.use('/api', router);
 expressapp.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'https://51.15.142.59:8888');
+  res.setHeader('Access-Control-Allow-Origin', 'http://51.15.142.59:8000');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
