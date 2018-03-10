@@ -15,7 +15,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://51.15.142.59:8888/api/get';
+        const link = 'https://51.15.142.59:8888/api/get';
         const bodyObject = {
         };
         const bodyString = JSON.stringify(bodyObject); // Stringify payload
@@ -33,7 +33,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://51.15.142.59:8888/api/get';
+        const link = 'https://51.15.142.59:8888/api/get';
         const senderName = sessionStorage.getItem('name')
         console.log(senderName);
         const bodyObject = {
