@@ -68,7 +68,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'https://51.15.142.59:8888/api/get';
+        var link = 'http://51.15.142.59:8888/api/get';
         var bodyObject = {};
         var bodyString = JSON.stringify(bodyObject); // Stringify payload
         return this.http.get(link, options) // ...using post request
@@ -84,7 +84,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'https://51.15.142.59:8888/api/post';
+        var link = 'http://51.15.142.59:8888/api/post';
         var senderName = sessionStorage.getItem('name');
         console.log(senderName);
         var bodyObject = {
