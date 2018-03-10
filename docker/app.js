@@ -30,6 +30,7 @@ let app = require('lotion')({
     var done = finalhandler(req, res);
     serve(req, res, done);
   });
+  server.use(cors({credentials: true, origin: true}))
   server.listen(8000);
 
 var express    = require('express');        // call express
