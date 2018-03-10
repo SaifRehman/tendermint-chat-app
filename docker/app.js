@@ -2,6 +2,8 @@ var https = require('https');
 var path = require('path');
 let shea = require('shea')
 var cors = require('cors')
+var request = require('request');
+
 let genesis = require.resolve('./genesis.json');
 var http = require('http');
 var finalhandler = require('finalhandler');
@@ -24,18 +26,11 @@ let app = require('lotion')({
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
 var bodyParser = require('body-parser');
-expressapp.all('*', function(req, res, next) {
-  res.header("Access-Control-Allow-Origin","*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
- });
-expressapp.use(bodyParser.urlencoded({ extended: true }));
-expressapp.use(bodyParser.json());
 expressapp.use(cors({credentials: true, origin: true}))
 expressapp.use(express.static(path.join(__dirname, 'public')));
+expressapp.use(bodyParser.urlencoded({ extended: true }));
+expressapp.use(bodyParser.json());
 var port =  8888;       
-var router = express.Router();              // get an instance of the express Router
-var request = require('request');
 expressapp.get('/api/get', function(req, res) {
 request('http://localhost:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
