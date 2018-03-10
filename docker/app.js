@@ -22,21 +22,21 @@ let app = require('lotion')({
   var serveStatic = require('serve-static');
   var serve = serveStatic("./");
 
-  // var server = http.createServer(function(req, res) {
+  var server = http.createServer(function(req, res) {
 
 
-  //   res.header('Access-Control-Allow-Origin', 'http://localhost:8080/');
-  //   res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  //   res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
-  //   if ( req.method === 'OPTIONS' ) {
-  //     res.writeHead(200);
-  //     res.end();
-  //     return;
-  //   }
-  //   var done = finalhandler(req, res);
-  //   serve(req, res, done);
-  // });
-  // server.listen(8000);
+    res.header('Access-Control-Allow-Origin', 'http://localhost:8080/');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization, Content-Length, X-Requested-With');
+    if ( req.method === 'OPTIONS' ) {
+      res.writeHead(200);
+      res.end();
+      return;
+    }
+    var done = finalhandler(req, res);
+    serve(req, res, done);
+  });
+  server.listen(8000);
 
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
@@ -81,6 +81,5 @@ expressapp.use(function (req, res, next) {
   res.setHeader('Access-Control-Allow-Headers', '*');
 });
 expressapp.use(cors({credentials: true, origin: true}))
-expressapp.use(express.static(path.join(__dirname, 'public')));
 expressapp.listen(port)
 console.log('Magic happens on port ' + port);
