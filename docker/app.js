@@ -6,8 +6,8 @@ let app = require('lotion')({
   devMode: true
 })
   app.use((state, tx) => {
-    if (typeof tx.username === 'string' && typeof tx.message === 'string') {
-      state.messages.push({ username: tx.username, message: tx.message })
+    if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+      state.messages.push({ sender: tx.sender, message: tx.message })
     }
   })
   app.listen(3000).then(function(data){
@@ -39,6 +39,24 @@ request('http://localhost:3000/state', function (error, response, body) {
         res.json(JSON.parse(body));   
      }
 })
+});
+
+router.post('/post', function(req, res) {
+  var sender = req.body.sender;
+  var message = req.body.message;
+
+  var myJSONObject = {"sender":sender,"message":message};
+  console.log(myJSONObject);
+  request({
+      url: "http://localhost:3000/txs",
+      method: "POST",
+      json: true,   // <--Very important!!!
+      body: myJSONObject
+  }, function (error, response, body){
+    console.log(body);
+    res.json({"success":"yes"});   
+  });
+
 });
 expressapp.use('/api', router);
 expressapp.listen(port);
