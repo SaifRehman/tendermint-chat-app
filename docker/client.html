@@ -1,0 +1,99 @@
+<html>
+
+<body>
+    <div id="wrapper">    
+        <div id="yourdiv"><img src="https://i.imgur.com/99rIZ1p.png" height="80" width="200"></div>
+    </div>
+  <div class="center-div">
+    <div class = "move">
+    <form onsubmit="return sendmsg()">
+      <input type="text" id="msg" placeholder="Who invented bitcoin? " />
+      <button class="button">SEND</button>
+    </form>
+    <div id="msgs"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+<style>
+  body {
+    background-color: #36c3e2;
+  }
+.move {
+    padding-left: 20px;
+}
+  .center-div {
+    position: absolute;
+    margin: auto;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 400px;
+    height: 400px;
+    background-color: #ffffff;
+    border-radius: 3px;
+  }
+  #wrapper {
+  text-align: center;
+}
+#yourdiv {
+  display: inline-block;
+}
+  .button {
+    background-color: #6cdcf5;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+  }
+</style>
+<script>
+  let username = prompt('what\'s ur name ?')
+  setInterval(() => {
+    fetch('/state').then(res => res.json()).then(state => {
+      let msgs = document.getElementById('msgs')
+      console.log(state);
+      msgs.innerHTML = ''
+      state.messages.forEach(message => {
+        if (message !== null) {
+          console.log('message', message);
+          let usernameSpan = document.createElement('span')
+          usernameSpan.textContent = message.username + ': '
+          let msgSpan = document.createElement('span')
+          msgSpan.textContent = 'has acquired the block in the silsila wallet'
+          let messageContainer = document.createElement('div')
+          messageContainer.appendChild(usernameSpan)
+          messageContainer.appendChild(msgSpan)
+          msgs.appendChild(messageContainer)
+        }
+      })
+    })
+  }, 1000)
+  function sendmsg() {
+    let inp = document.getElementById('msg')
+    let msg = inp.value
+    console.log(msg);
+    console.log(typeof (msg));
+    if (msg === 'satoshi') {
+      console.log(msg);
+      console.log(typeof (msg));
+      fetch('/txs', {
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        method: 'post',
+        body: JSON.stringify({ username: username, message: msg })
+      })
+      inp.value = ''
+    }
+    return false
+  }
+</script>

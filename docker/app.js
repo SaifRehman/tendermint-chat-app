@@ -1,46 +1,14 @@
 let shea = require('shea')
-let genesis = require.resolve('./genesis.json');
 
-let app = require('./lotion')({
-  lotionPort: 3000,
-  p2pPort: 46656,
-  tendermintPort: 46657,
+let app = require('lotion')({
   initialState: { messages: [] },
 })
 
+app.use((state, tx) => {
+  if (typeof tx.username === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.username, message: tx.message })
+  }
+})
 
-async function main() {
-  app.use((state, tx) => {
-    if (typeof tx.username === 'string' && typeof tx.message === 'string') {
-      state.messages.push({ username: tx.username, message: tx.message })
-    }
-  })
-  
-  app.use(shea('./index.html'))
-  app.listen(3000).then(function(data){
-    console.log('data iss',data)
-  })
-  var http = require('http');
-  var finalhandler = require('finalhandler');
-  var serveStatic = require('serve-static');
-  var serve = serveStatic("./");
-  var server = http.createServer(function(req, res) {
-    var done = finalhandler(req, res);
-    serve(req, res, done);
-  });
-  server.listen(8000);
-
-  process.on('unhandledRejection', function(reason, p){
-    console.log('Please report the following error as a Github Issue on: ')
-    console.log(
-        ` 
-        Please report the following error as a Github Issue on:
-        https://github.com/devslopes/blockchat
-        `
-    )
-    console.log("Possibly Unhandled Rejection at: Promise ", p, " reason: ", reason);
-    console.trace();
-});
-}
-
-main()
+app.use(shea('./client.html'))
+app.listen(3000)
