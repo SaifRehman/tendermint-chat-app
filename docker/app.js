@@ -1,6 +1,6 @@
 let shea = require('shea')
 
-let app = require('lotion')({
+let app = require('./lotion')({
   initialState: { messages: [] },
 })
 
