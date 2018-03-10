@@ -1,8 +1,9 @@
 var https = require('https');
 var fs = require('fs');
 var sslOptions = {
-  key: fs.readFileSync('key.pem'),
-  cert: fs.readFileSync('cert.pem')
+  key: fs.readFileSync('key.pem', 'utf8'),
+  cert: fs.readFileSync('cert.pem', 'utf8'),
+  passphrase: '12345'
 };
 let shea = require('shea')
 var cors = require('cors')
