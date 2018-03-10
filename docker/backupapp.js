@@ -1,22 +1,17 @@
 let shea = require('shea')
 let genesis = require.resolve('./genesis.json');
-
 let app = require('./lotion')({
-  lotioPort:7777,
+  lotioPort:3000,
   initialState: { messages: [] },
   devMode: true
 })
-
-
-
   app.use((state, tx) => {
     if (typeof tx.username === 'string' && typeof tx.message === 'string') {
       state.messages.push({ username: tx.username, message: tx.message })
     }
   })
-  
   app.use(shea('./index.html'))
-  app.listen(7777).then(function(data){
+  app.listen(3000).then(function(data){
     console.log('data iss',data)
   })
   var http = require('http');
