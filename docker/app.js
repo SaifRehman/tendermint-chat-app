@@ -6,14 +6,12 @@ var request = require('request');
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
 var bodyParser = require('body-parser');
-
 expressapp.use(cors())
 expressapp.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Headers", "*");
   next();
 });
-
 expressapp.use(express.static(path.join(__dirname, 'public')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
@@ -40,11 +38,9 @@ expressapp.post('/api/post', function(req, res) {
     console.log(body);
     res.json({"success":"yes"});   
   });
-
 });
 expressapp.listen(port)
 console.log('Magic happens on port ' + port);
-
 let app = require('lotion')({
   lotioPort:3000,
   tendermintPort:46657,
