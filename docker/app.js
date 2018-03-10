@@ -17,6 +17,7 @@ async function main() {
     }
   })
   
+  app.use(shea('./index.html'))
   app.listen(3000).then(function(data){
     console.log('data iss',data)
   })
