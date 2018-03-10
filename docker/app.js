@@ -6,17 +6,11 @@ var request = require('request');
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
 var bodyParser = require('body-parser');
-expressapp.use(cors())
-expressapp.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "*");
-  next();
-});
 expressapp.use(express.static(path.join(__dirname, 'public')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
 var port =  8888;       
-expressapp.get('/api/get', function(req, res) {
+expressapp.get('/api/get',cors(), function(req, res) {
 request('http://127.0.0.1:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
         console.log(body) // Print the google web page.
@@ -24,7 +18,7 @@ request('http://127.0.0.1:3000/state', function (error, response, body) {
      }
 })
 });
-expressapp.post('/api/post', function(req, res) {
+expressapp.post('/api/post',cors(), function(req, res) {
   var sender = req.body.sender;
   var message = req.body.message;
   var myJSONObject = {"sender":sender,"message":message};
