@@ -2,6 +2,7 @@ let shea = require('shea')
 let genesis = require.resolve('./genesis.json');
 let app = require('lotion')({
   lotioPort:3000,
+  tendermintPort:46657,
   initialState: { messages: [] },
   devMode: true
 })
