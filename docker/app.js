@@ -86,6 +86,6 @@ expressapp.use(function (req, res, next) {
   // Pass to next layer of middleware
   next();
 });
-expressapp.use(cors())
+expressapp.use(cors({credentials: true, origin: true}))
 https.createServer(sslOptions, expressapp).listen(port)
 console.log('Magic happens on port ' + port);
