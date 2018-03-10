@@ -70,7 +70,7 @@ router.post('/post', function(req, res) {
 expressapp.use('/api', router);
 expressapp.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader("Access-Control-Allow-Origin", " http://51.15.142.59");
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', '*');
   // Request headers you wish to allow
