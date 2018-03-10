@@ -11,6 +11,7 @@
       let msgs = document.getElementById('msgs')
       msgs.innerHTML = ''
       state.messages.forEach(message => {
+        if (message !== null) {
         let usernameSpan = document.createElement('span')
         usernameSpan.textContent = message.username + ': '
         let msgSpan = document.createElement('span')
@@ -19,6 +20,8 @@
         messageContainer.appendChild(usernameSpan)
         messageContainer.appendChild(msgSpan)
         msgs.appendChild(messageContainer)
+        }
+        
       })
     })
   }, 1000)
