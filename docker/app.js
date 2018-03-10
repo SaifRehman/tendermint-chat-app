@@ -81,16 +81,10 @@ router.post('/post', function(req, res) {
 expressapp.use('/api', router);
 expressapp.use(function (req, res, next) {
   // Website you wish to allow to connect
-  res.setHeader("Access-Control-Allow-Origin", " http://51.15.142.59");
-  // Request methods you wish to allow
-  res.setHeader('Access-Control-Allow-Methods', '*');
-  // Request headers you wish to allow
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Request-Method', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'OPTIONS, GET, POST');
   res.setHeader('Access-Control-Allow-Headers', '*');
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  // Pass to next layer of middleware
-  next();
 });
 expressapp.use(cors({credentials: true, origin: true}))
 expressapp.use('/public', express.static('public'))
