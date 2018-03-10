@@ -21,8 +21,6 @@ let app = require('lotion')({
   app.listen(3000).then(function(data){
     console.log('data iss',data)
   })
-
-
 var express    = require('express');        // call express
 var expressapp        = express();                 // define our app using express
 var bodyParser = require('body-parser');
@@ -35,7 +33,7 @@ expressapp.use(function (req, res, next) {
 var port =  8888;       
 var router = express.Router();              // get an instance of the express Router
 var request = require('request');
-router.get('/get', function(req, res) {
+expressapp.get('/api/get', function(req, res) {
 request('http://localhost:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
         console.log(body) // Print the google web page.
@@ -44,10 +42,9 @@ request('http://localhost:3000/state', function (error, response, body) {
 })
 });
 
-router.post('/post', function(req, res) {
+expressapp.post('/api/post', function(req, res) {
   var sender = req.body.sender;
   var message = req.body.message;
-
   var myJSONObject = {"sender":sender,"message":message};
   console.log(myJSONObject);
   request({
@@ -61,7 +58,6 @@ router.post('/post', function(req, res) {
   });
 
 });
-expressapp.use('/api', router);
 
 expressapp.listen(port)
 console.log('Magic happens on port ' + port);
