@@ -82,5 +82,5 @@ expressapp.use(function (req, res, next) {
 });
 expressapp.use(cors({credentials: true, origin: true}))
 expressapp.use('/public', express.static('public'))
-https.createServer(sslOptions, expressapp).listen(port)
+expressapp.listen(port)
 console.log('Magic happens on port ' + port);
