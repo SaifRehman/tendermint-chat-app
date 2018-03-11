@@ -1,6 +1,4 @@
-var https = require('https');
 var path = require('path');
-let shea = require('shea')
 var cors = require('cors')
 var request = require('request');
 var express    = require('express');        // call express
