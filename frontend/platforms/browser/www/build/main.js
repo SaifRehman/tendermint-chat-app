@@ -68,9 +68,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/get';
-        var bodyObject = {};
-        var bodyString = JSON.stringify(bodyObject); // Stringify payload
+        var link = 'http://127.0.0.1:8080/api/get';
         return this.http.get(link, options) // ...using post request
             .map(function (res) { return res.json(); })
             .catch(function (error) {
@@ -84,14 +82,13 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/post';
+        var link = 'http://127.0.0.1:8080/api/post';
         var senderName = sessionStorage.getItem('name');
         console.log(senderName);
         var bodyObject = {
             sender: senderName,
             message: text
         };
-        var bodyString = JSON.stringify(bodyObject); // Stringify payload
         return this.http.post(link, bodyObject, options) // ...using post request
             .map(function (res) { return res.json(); })
             .catch(function (error) {

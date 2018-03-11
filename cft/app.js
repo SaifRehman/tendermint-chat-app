@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 expressapp.use(express.static(path.join(__dirname, 'public')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
-var port =  8080;       
+var port =  8080;   
 expressapp.get('/api/get',cors(), function(req, res) {
 request('http://127.0.0.1:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
