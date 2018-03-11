@@ -13,7 +13,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://127.0.0.1:8080/api/get';
+        const link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/get';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -27,7 +27,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://127.0.0.1:8080/api/post';
+        const link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/post';
         const senderName = sessionStorage.getItem('name')
         console.log(senderName);
         const bodyObject = {

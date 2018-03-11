@@ -1,0 +1,3 @@
+applications:
+- name:    tendermint
+  memory:  1024M
