@@ -1,4 +1,3 @@
 applications:
 - name:    tendermint
-  random-route: true
-  memory:  500M
+  memory:  1024M

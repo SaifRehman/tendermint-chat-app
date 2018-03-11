@@ -1,3 +1,0 @@
-applications:
-- name:    hello-tendermint
-  memory:  500M
