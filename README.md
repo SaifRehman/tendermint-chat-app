@@ -138,7 +138,7 @@ $ cf push
 ## Tendermint Api Documentation
 | Endpoint      | Type          | Payload|
 | ------------- |:-------------:| -----:|
-| /api/abci_info    | GET | - |
+| /api/get    | GET | - |
 | /api/abci_info    | GET | - |
 | /api/dump_consensus_state     | GET      |   - |
 | /api/genesis | GET      |    - |
@@ -157,3 +157,4 @@ $ cf push
 | /api/subscribe |POST      |    {"query":""} |
 | /api/tx | POST      |    {"hash":"","prove":""}  |
 | /api/tx_search' | POST     |    {"query":"","prove":""} |
+| /api/post    | POST | {"sender":"","message":""} |
