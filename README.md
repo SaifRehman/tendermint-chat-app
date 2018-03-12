@@ -1,3 +1,14 @@
+Table of Contents
+=================
+
+   * [Running the blockchain locally](#running-the-blockchain-locally)
+   * [Run FrontEnd Mobile Application locally](#run-frontEnd-mobile-application-locally)
+   * [Deploying to IBM Cloud as a Cloud Foundry application](#deploying-to-ibm-cloud-as-a-cloud-foundry-application)
+   * [Cors issue fix](#cors-issue-fix)
+   * [Docker Support](#docker-support)
+   * [Tendermint Api Documentation](#tendermint-api-documentation)
+
+
 ## Tendermint Blockchain Chat App
 ![Tendermint](http://www.peerity.io/images/Tendermint-logo2.png)
 
@@ -102,7 +113,7 @@ $ docker rm containerid
 
 ![8](img/8.png)
 
-## Deploying to IBM Cloud as a Cloud Foundry aplication
+## Deploying to IBM Cloud as a Cloud Foundry application
 1. Signup to [IBM Cloud](https://console.bluemix.net/registration/)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 3. Open ```manifest.yml``` and give app a name
