@@ -233,31 +233,6 @@ expressapp.post('/api/tx_search', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/api/unsubscribe', cors(), function (req, res) {
-  var query = req.body.query;
-  var link = "http://127.0.0.1:46657/unsubscribe?"
-  if(query !== undefined && query!==null){
-    link = link + "&query=" + query
-  }
-  request(link, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.json(JSON.parse(body));
-    }
-  })
-});
-
-expressapp.post('/api/commit', cors(), function (req, res) {
-  var height = req.body.height;
-  var link = "http://127.0.0.1:46657/commit?"
-  if(height !== undefined && height!==null){
-    link = link + "&height=" + height
-  }
-  request(link, function (error, response, body) {
-    if (!error && response.statusCode == 200) {
-      res.json(JSON.parse(body));
-    }
-  })
-});
 
 expressapp.get('/api/get', cors(), function (req, res) {
   request('http://127.0.0.1:3000/state', function (error, response, body) {
