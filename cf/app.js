@@ -1,8 +1,8 @@
 var path = require('path');
 var cors = require('cors')
 var request = require('request');
-var express = require('express');        // call express
-var expressapp = express();                 // define our app using express
+var express = require('express'); 
+var expressapp = express();
 var bodyParser = require('body-parser');
 expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
@@ -255,6 +255,7 @@ expressapp.post('/api/post', cors(), function (req, res) {
     res.json({ "success": "yes" });
   });
 });
+
 expressapp.listen(port)
 let app = require('lotion')({
   lotioPort: 3000,

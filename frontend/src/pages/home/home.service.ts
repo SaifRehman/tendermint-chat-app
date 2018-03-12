@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import {config} from '../config/config'
 @Injectable()
 export class HomeService {
     constructor(
@@ -13,7 +14,8 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/get';
+        
+        const link = config.baseUrl+'api/get';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -27,7 +29,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = 'http://tendermint-spiteless-oiliness.mybluemix.net/api/post';
+        const link = config.baseUrl+'api/post';
         const senderName = sessionStorage.getItem('name')
         console.log(senderName);
         const bodyObject = {
