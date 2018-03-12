@@ -9,6 +9,11 @@ Table of Contents
    * [Tendermint Api Documentation](#tendermint-api-documentation)
 
 
+
+## Contributors
+
+| [<img src="https://pbs.twimg.com/profile_images/969598365716635648/-E0SfuGA_400x400.jpg" width="100px;"/><br /><sub><b>SaifRehman</b></sub>](https://www.linkedin.com/in/saif-ur-rehman/)<br />[💻](https://github.com/SaifRehman/watsonic/commits?author=SaifRehman "Code") [📖](https://github.com/SaifRehman/tendermint-chat-app/commits?author=SaifRehman "Documentation") [🤔](#ideas-keppel "Ideas, Planning, & Feedback") [⚠️](https://github.com/SaifRehman/tendermint-chat-app/commits?author=SaifRehman "Tests") | [<img src="https://media.licdn.com/dms/image/C5603AQGMPj7hzDW7wA/profile-displayphoto-shrink_800_800/0?e=1526047200&v=alpha&t=YdCQCtPQjXGOIv2u_WPVhltCl27o7UxnT6na7B7TjQc" width="100px;"/><br /><sub><b>Jacob Gadikian</b></sub>](https://www.linkedin.com/in/jacobgadikian/)<br />[💻](https://github.com/SaifRehman/tendermint-chat-app/commits?author=faddat "Code") [🤔](#ideas-mappum "Ideas, Planning, & Feedback") [⚠️](https://github.com/SaifRehman/tendermint-chat-app/commits?author=faddat "Tests") [🔌](#plugin-mappum "Plugin/utility libraries")|
+| :---: | :---: |
 ## Tendermint Blockchain Chat App
 ![Tendermint](http://www.peerity.io/images/Tendermint-logo2.png)
 
