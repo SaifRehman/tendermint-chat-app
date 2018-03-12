@@ -147,15 +147,3 @@ Since we have limited access to ports in cloud foundry the app has a middle ware
 | /api/num_unconfirmed_txs| GET     |   - |
 | /api/status| GET     |    - |
 | /api/unconfirmed_txs | GET     |   - |
-| /api/abci_query | POST      |    {"path":"","data":"","height":0,"prove":""} |
-| /api/block |POST     |    {"height":0} |
-| /api/block_results |POST      |     {"height":0} |
-| /api/blockchain| POST      |    {"minHeight":0,"maxHeight":100} |
-| /api/broadcast_tx_async|POST     |    {"tx":""}|
-| /api/broadcast_tx_commit | POST     |    {"tx":""} |
-| /api/broadcast_tx_sync | POST      |    {"tx":""} |
-| /api/commit |POST    |     {"height":0}|
-| /api/subscribe |POST      |    {"query":""} |
-| /api/tx | POST      |    {"hash":"","prove":""}  |
-| /api/tx_search' | POST     |    {"query":"","prove":""} |
-| /api/post    | POST | {"sender":"","message":""} |
