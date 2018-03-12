@@ -139,6 +139,7 @@ $ cf push
 | Endpoint      | Type          | Payload|
 | ------------- |:-------------:| -----:|
 | /api/abci_info    | GET | - |
+| /api/abci_info    | GET | - |
 | /api/dump_consensus_state     | GET      |   - |
 | /api/genesis | GET      |    - |
 | /api/net_info | GET   |    -|
@@ -155,4 +156,4 @@ $ cf push
 | /api/commit |POST    |     {"height":0}|
 | /api/subscribe |POST      |    {"query":""} |
 | /api/tx | POST      |    {"hash":"","prove":""}  |
-| /api/tx_search' | POST     |    {"hash":"","prove":""} |
+| /api/tx_search' | POST     |    {"query":"","prove":""} |
