@@ -2,7 +2,7 @@ Table of Contents
 =================
 
    * [Running the blockchain locally](#running-the-blockchain-locally)
-   * [Run FrontEnd Mobile Application locally](#run-frontEnd-mobile-application-locally)
+   * [Run FrontEnd Mobile Application locally](#run-frontend-mobile-application-locally)
    * [Deploying to IBM Cloud as a Cloud Foundry application](#deploying-to-ibm-cloud-as-a-cloud-foundry-application)
    * [Cors issue fix](#cors-issue-fix)
    * [Docker Support](#docker-support)
