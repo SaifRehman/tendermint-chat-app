@@ -8,7 +8,6 @@ expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
 var port = 8080;
-
 expressapp.get('/api/abci_info', cors(), function (req, res) {
   request('http://127.0.0.1:46657/abci_info', function (error, response, body) {
     if (!error) {

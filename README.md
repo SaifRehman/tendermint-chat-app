@@ -1,22 +1,18 @@
 ## Tendermint Blockchain Chat App
 ![Tendermint](http://www.peerity.io/images/Tendermint-logo2.png)
 
-This is minimal chat application based on Tendermint Consensus Engine using Lotionjs in 30 lines of code!. It also includes web/mobile application built using Ionic 3.
+This is minimal chat application based on Tendermint Consensus Engine using Lotionjs. It also includes web/mobile application built using Ionic 3.
 
-### Running the blockchain
-1. Install Tendermint
-```
-$ go get -u github.com/tendermint/tendermint/cmd/tendermint
-```
-2. Navigate to blockchain dir 
+### Running the blockchain locally
+1. Navigate to blockchain dir 
 ```
 $ cd cf
 ```
-3. Install dependencies 
+2. Install dependencies 
 ```
 $ npm i 
 ```
-4. Run the Blockchain
+3. Run the Blockchain
 ``` 
 $ node app.js
 ```
@@ -35,7 +31,7 @@ End points available through ABCI (Application blockchain interface) :)
 
 How simple can that be?
 
-## Run FrontEnd Mobile Application
+## Run FrontEnd Mobile Application locally
 1. Navigate to frontend dir
 ```
 $ cd frontend
@@ -78,7 +74,7 @@ $ docker build -t tendermint .
 ```
 3. Run Dockerfile
 ```
-$ docker run -p 46656:46656 -p 46657:46657 -p 35597:35597 -d tendermint:latest
+$ docker run -p 8080:8080 -p 46657:46657 -d tendermint:latest
 ```
 4. See the running container
 ```
@@ -105,3 +101,35 @@ $ docker rm containerid
 
 
 ![8](img/8.png)
+
+## Deploying to IBM Cloud as a Cloud Foundry aplication
+1. Signup to [IBM Cloud](https://console.bluemix.net/registration/)
+2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+3. Open ```manifest.yml``` and give app a name
+4. Open command line and type 
+```
+$ cf login -a https://api.ng.bluemix.net -u <ibm.com id>
+``` 
+5. Navigate to ```cf``` directory 
+```
+$cd cf
+```
+6. Push the Application to IBM Cloud
+```
+$ cf push
+```
+7. Copy the URL generated Cloud Foundry
+8. Open ```frontend/src/pages/congif/config.ts``` , and change the baseurl to the url you copied.
+9. Navigate to frontend dir
+```
+$ cd frontend
+```
+10. Build the production ready web app by ionic cli
+```
+$ ionic cordova build browser
+```
+11. Navigate to ```frontend/platforms/browser```. Copy ```www``` folder and paste in ```cf``` folder
+12. Push the app, this will have a fully functional Blockchain with a sexy frontend build with ionic <3
+```
+$ cf push
+```
