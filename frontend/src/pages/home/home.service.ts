@@ -14,7 +14,6 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        
         const link = config.baseUrl+'api/get';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
