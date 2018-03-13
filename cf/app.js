@@ -254,8 +254,8 @@ expressapp.post('/api/post', cors(), function (req, res) {
     res.json({ "success": "yes" });
   });
 });
-
 expressapp.listen(port)
+
 let app = require('lotion')({
   lotioPort: 3000,
   tendermintPort: 46657,
