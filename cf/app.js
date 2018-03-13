@@ -257,7 +257,7 @@ expressapp.post('/api/post', cors(), function (req, res) {
 expressapp.listen(port)
 
 let app = require('lotion')({
-  lotioPort: 3000,
+  lotionPort: 3000,
   tendermintPort: 46657,
   initialState: { messages: [] },
   devMode: true
