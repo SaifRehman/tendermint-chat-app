@@ -82,7 +82,7 @@ link: [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/
 ## Docker Support 
 1. Navigate to blockchain directory
 ```
-$ cd blockchain
+$ cd docker
 ```
 2. Build image from Dockerfile
 ```
