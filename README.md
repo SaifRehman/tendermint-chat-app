@@ -119,7 +119,7 @@ $ docker rm containerid
 ![8](img/8.png)
 
 ## Deploying to IBM Cloud as a Cloud Foundry application
-1. Signup to [IBM Cloud](https://console.bluemix.net/registration/)
+1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
