@@ -105,19 +105,6 @@ $ docker stop containerid
 $ docker rm containerid
 ```
 
-## Screenshot of App
-
-![5](img/5.png)
-
-
-![6](img/6.png)
-
-
-![7](img/7.png)
-
-
-![8](img/8.png)
-
 ## Deploying to IBM Cloud as a Cloud Foundry application
 1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
@@ -174,3 +161,16 @@ $ cf push
 | /api/tx | POST      |    {"hash":"","prove":""}  |
 | /api/tx_search' | POST     |    {"query":"","prove":""} |
 | /api/post    | POST | {"sender":"","message":""} |
+
+## Screenshot of App
+
+![5](img/5.png)
+
+
+![6](img/6.png)
+
+
+![7](img/7.png)
+
+
+![8](img/8.png)
