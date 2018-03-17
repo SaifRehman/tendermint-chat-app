@@ -262,9 +262,10 @@ let app = require('lotion')({
   genesis: './genesis.json',
   tendermintPort: 46657,
   initialState: { messages: [] },
-  logTendermint: true,
   p2pPort: 46661,
   keys: 'privkey1.json',
+  devMode: true,
+  peers: ['localhost:46660']
 })
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
