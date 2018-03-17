@@ -1,24 +1,9 @@
 var path = require('path');
 var cors = require('cors')
 var request = require('request');
-var express = require('express');        // call express
-var expressapp = express();                 // define our app using express
+var express = require('express'); 
+var expressapp = express();
 var bodyParser = require('body-parser');
-
-let app = require('lotion')({
-  lotioPort: 3000,
-  tendermintPort: 46657,
-  initialState: { messages: [] },
-  devMode: true
-})
-app.use((state, tx) => {
-  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
-    state.messages.push({ sender: tx.sender, message: tx.message })
-  }
-})
-app.listen(3000).then(function (data) {
-})
-
 expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
@@ -271,3 +256,21 @@ expressapp.post('/api/post', cors(), function (req, res) {
   });
 });
 expressapp.listen(port)
+
+console.log('port isssssssssssssss', process.env.PORT )
+let app = require('lotion')({
+  lotionPort: 3000,
+  genesis: 'genesis.json',
+  tendermintPort: 46657,
+  initialState: { messages: [] },
+  devMode: true,
+  keys: ['privkey1.json','privkey2.json'],
+})
+app.use((state, tx) => {
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
+  }
+})
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
+})
