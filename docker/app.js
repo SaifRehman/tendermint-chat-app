@@ -259,12 +259,12 @@ expressapp.listen(port)
 
 console.log('port isssssssssssssss', process.env.PORT )
 let app = require('lotion')({
-  lotionPort: 3000,
-  genesis: 'genesis.json',
+  genesis: './genesis.json',
   tendermintPort: 46657,
   initialState: { messages: [] },
-  devMode: true,
-  keys: ['privkey1.json','privkey2.json'],
+  logTendermint: true,
+  p2pPort: 46661,
+  keys: 'privkey1.json',
 })
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
