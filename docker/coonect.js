@@ -1,11 +1,17 @@
-let { connect } = require('lotion')
-
-async function main() {
-  let { send, state } = await connect('0edc9b371a9011764e61913e452a99b6f5deccf64d07f79f80d22fce15efc60a', { nodes: ['http://tendermint-new.mybluemix.net:80'] })
-
-  console.log(await send({ sender: 'keppel', message: 'hey saif' }))
-  console.log(await state)
-  process.exit()
-}
-
-main()
+let app = require('lotion')({
+  genesis: './genesis.json',
+  initialState: { messages: [] },
+  tendermintPort: 46655,
+  logTendermint: true,
+  peers: ['localhost:46661','localhost:46660'],
+  // keys: 'privkey2.json',
+  // devMode: true
+})
+app.use((state, tx) => {
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
+  }
+})
+app.listen(3003).then(({ GCI }) => {
+  console.log(GCI)
+})

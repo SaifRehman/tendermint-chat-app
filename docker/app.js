@@ -263,6 +263,7 @@ let app = require('lotion')({
   tendermintPort: 46657,
   initialState: { messages: [] },
   p2pPort: 46661,
+  logTendermint: true,
   keys: 'privkey1.json',
   devMode: true,
   peers: ['localhost:46660']

@@ -28,6 +28,7 @@
     "axios": "^0.17.1",
     "commander": "^2.6.0",
     "cors": "^2.8.4",
+    "delay": "^2.0.0",
     "express": "^4.16.2",
     "finalhandler": "^1.1.1",
     "get-port": "^3.2.0",
@@ -42,6 +43,7 @@
     "serve-index": "^1.9.1",
     "serve-static": "^1.13.2",
     "shea": "0.0.10",
+    "sleep": "^5.1.1",
     "swearjar": "^0.2.0"
   },
   "devDependencies": {
