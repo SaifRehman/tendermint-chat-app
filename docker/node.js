@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 let app = require('lotion')({
     // genesis: './genesis.json',
     tendermintPort: 46659,
@@ -16,3 +17,13 @@ let app = require('lotion')({
   })
 
 
+=======
+let { connect } = require('lotion')
+async function main() {
+  let { send } = await connect(null, { genesis: require('./genesis.json'), nodes: ['ws://localhost:46659','ws://localhost:46657','ws://localhost:46658','ws://localhost:46655'] })
+  console.log(await send({ sender: 'keppel', message: 'hey saif' }))
+  console.log('exitttttttttttttttttttt')
+  process.exit();
+}
+main()
+>>>>>>> 90f0fcef1977b04052750ec71f2ec6f64b208386
