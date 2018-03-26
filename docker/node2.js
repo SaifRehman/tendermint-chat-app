@@ -1,3 +1,4 @@
+let shea = require('shea')
 let app = require('lotion')({
     genesis: './genesis.json',
     initialState: { messages: [] },
@@ -13,6 +14,8 @@ let app = require('lotion')({
       state.messages.push({ sender: tx.sender, message: tx.message })
     }
   })
+  app.use(shea('public/'))
+
   app.listen(3001).then(({ GCI }) => {
     console.log(GCI)
   })
