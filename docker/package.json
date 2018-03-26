@@ -1,52 +1,18 @@
 {
-  "name": "blockchat",
-  "version": "1.0.1",
-  "description": "A simple blockchain chat app built with Javascript, Lotion, and Tendermint",
-  "author": "Mark Price",
-  "license": "MIT",
+  "name": "lotion-shea-starter",
+  "version": "1.0.0",
+  "description": "",
   "main": "app.js",
-  "keywords": [
-    "lotionjs",
-    "tendermint",
-    "blockchain",
-    "proof of stake"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/devslopes/blockchat"
-  },
-  "engines": {
-    "node": ">=8.2"
-  },
   "scripts": {
-    "start": "node app.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node app.js",
+    "validator": "PRODUCTION=true node app.js"
   },
-  "bin": {
-    "blockchat": "bin/chat-client.js"
-  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^0.17.1",
-    "commander": "^2.6.0",
-    "cors": "^2.8.4",
-    "delay": "^2.0.0",
-    "express": "^4.16.2",
-    "finalhandler": "^1.1.1",
-    "get-port": "^3.2.0",
-    "http-post": "^0.1.1",
-    "http-proxy": "^1.8.1",
-    "https": "^1.0.0",
-    "left-pad": "^1.2.0",
     "lotion": "^0.1.17",
-    "minimist": "^1.2.0",
-    "path": "^0.12.7",
-    "readline": "^1.3.0",
-    "serve-index": "^1.9.1",
-    "serve-static": "^1.13.2",
-    "shea": "0.0.10",
-    "sleep": "^5.1.1",
-    "swearjar": "^0.2.0"
-  },
-  "devDependencies": {
-    "typings": "^2.1.1"
+    "shea": "0.0.11"
   }
 }
