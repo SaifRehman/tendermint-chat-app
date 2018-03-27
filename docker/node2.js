@@ -4,7 +4,7 @@ let app = require('lotion')({
     initialState: { messages: [] },
     p2pPort: 46661,
     tendermintPort: 46658,
-    // logTendermint: true,
+    logTendermint: true,
     peers: ['localhost:46660','localhost:46662','localhost:46663'],
     keys: 'privkey1.json',
     devMode: true
