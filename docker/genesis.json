@@ -17,6 +17,22 @@
             },
             "power": 20,
             "name": "prerna"
+        },
+        {
+            "pub_key": {
+                "type": "ed25519",
+                "data": "3C97E264713E56A5E7E0F00F31C37173B27DB52255DB907E191B727131989248"
+            },
+            "power": 60,
+            "name": "Matt"
+        },
+        {
+            "pub_key": {
+                "type": "ed25519",
+                "data": "AE12A9EC451C951C0307622A01A7C508DA4F97BFB556A41FBE1C5FB47022E51D"
+            },
+            "power": 80,
+            "name": "Alex"
         }
     ],
     "app_hash": ""
