@@ -5,7 +5,7 @@ let app = require('lotion')({
     p2pPort: 46661,
     tendermintPort: 46658,
     logTendermint: true,
-    peers: ['localhost:46660','localhost:46662','localhost:46663'],
+    peers: ['localhost:46660','localhost:46660'],
     keys: 'privkey1.json',
     devMode: true
   })
@@ -14,7 +14,6 @@ let app = require('lotion')({
       state.messages.push({ sender: tx.sender, message: tx.message })
     }
   })
-  app.use(shea('public/'))
 
   app.listen(3001).then(({ GCI }) => {
     console.log(GCI)
