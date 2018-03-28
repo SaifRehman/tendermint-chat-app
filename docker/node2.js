@@ -7,7 +7,6 @@ let app = require('lotion')({
     logTendermint: true,
     peers: ['localhost:46660','localhost:46660'],
     keys: 'privkey1.json',
-    devMode: true
   })
   app.use((state, tx) => {
     if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
