@@ -1,3 +1,5 @@
+require('dotenv').config({path: ".env-node1"});
+
 let shea = require('shea')
 let lotion = require('lotion')
 let app = lotion({

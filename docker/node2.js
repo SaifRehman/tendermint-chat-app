@@ -1,3 +1,5 @@
+require('dotenv').config({path: ".env-node2"});
+
 let shea = require('shea')
 let app = require('lotion')({
     genesis: './genesis.json',
