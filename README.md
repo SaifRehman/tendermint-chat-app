@@ -145,43 +145,6 @@ Your tendermint port is 46667
 
 How simple can that be?
 
-## CORS Issue Fix 
-If you face error as such 
-![error](img/error.png)
-
-1. Install "Allow-Control-Allow-Origin: *" plugin of google chrome to enable CORS
-
-link: [Allow-Control-Allow-Origin: *](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
-
-2. Enable CORS 
-![cors](img/cors.png)
-
-## Docker Support 
-1. Navigate to blockchain directory
-```
-$ cd docker
-```
-2. Build image from Dockerfile
-```
-$ docker build -t tendermint .
-```
-3. Run Dockerfile
-```
-$ docker run -p 8080:8080 -p 46657:46657 -d tendermint:latest
-```
-4. See the running container
-```
-$ docker ps
-```
-5. Stop the container
-```
-$ docker stop containerid
-``` 
-6. Remove Container
-```
-$ docker rm containerid
-```
-
 ## Deploying two validator nodes/peers on IBM Cloud
 1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
@@ -306,32 +269,28 @@ $ kubctl delete services --all
 $ kubctl get pods
 $ kubctl logs podname
 ```
-
-3. Open ```manifest.yml``` and give app a name
-4. Open command line and type 
+### Cook a sexy frontend (Using Ionic <3) and connect with validators to send txs to Blockchain
+1. Install Ionic
 ```
-$ cf login -a https://api.ng.bluemix.net -u <yourid>
-``` 
-5. Navigate to ```cf``` directory 
+$ npm i -g ionic cordova
 ```
-$cd cf
+2. Open ```manifest.yml``` and give app a name from ```cf/manifest.yml```
+3. Open ```frontend/src/pages/congif/config.ts``` , and give app name you mentioned in manifest.yml
+```TypeScript
+export class config {
+    public static baseUrl = "http://<appname>.mybluemix.net";
+    public  constructor() {
+    }
+}
 ```
-6. Push the Application to IBM Cloud
+4. Navigate to ```frontend``` directory and build the app
 ```
-$ cf push
-```
-7. Copy the URL generated Cloud Foundry
-8. Open ```frontend/src/pages/congif/config.ts``` , and change the baseurl to the url you copied.
-9. Navigate to frontend dir
-```
-$ cd frontend
-```
-10. Build the production ready web app by ionic cli
-```
+$ ionic cordova platform rm browser
+$ ionic cordova platform add browser
 $ ionic cordova build browser
 ```
-11. Navigate to ```frontend/platforms/browser```. Copy ```www``` folder and paste in ```cf``` folder
-12. Push the app, this will have a fully functional Blockchain with a sexy frontend build with ionic <3
+5. Navigate to ```frontend/platforms/browser```. Copy ```www``` folder and paste in ```cf``` folder
+6. Navigate to ```cf``` folder, and push the app, this will have a fully functional Blockchain with a sexy frontend build with ionic <3
 ```
 $ cf push
 ```
