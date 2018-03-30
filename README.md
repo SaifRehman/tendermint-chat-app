@@ -201,7 +201,9 @@ docker build -t tendermint .
 8. Click on create new cluster
 ![10](img/10.png)
 
-9. Name your cluster and create a cluster, wiat for few minutes to get it fully deployed
+9. Name your cluster and create a cluster, wiat for few minutes to get it fully deployed. After it is fully deployed click on the cluster
+![11](img/11.png)
+
 
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
