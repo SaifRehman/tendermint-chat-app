@@ -21,10 +21,7 @@ Table of Contents
 =================
 
    * [Running the Blockchain locally](#running-the-blockchain-locally)
-   * [Run FrontEnd Mobile Application locally](#run-frontend-mobile-application-locally)
-   * [Deploying to IBM Cloud as a Cloud Foundry application](#deploying-to-ibm-cloud-as-a-cloud-foundry-application)
-   * [Cors issue fix](#cors-issue-fix)
-   * [Docker Support](#docker-support)
+   * [Deploying 2 validators to IBM Cloud](#deploying-two-validator-nodes/peers-on-ibm-cloud)
    * [Tendermint Api Documentation](#tendermint-api-documentation)
 
 
