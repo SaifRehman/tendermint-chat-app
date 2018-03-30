@@ -7,7 +7,7 @@
   <br>
 </h1>
 
-<h4 align="center">Blockchain Chat App with ✨ Lotion ✨ and IBM Cloud</h4>
+<h4 align="center">Blockchain Chat App with  ✨ Lotion ✨  and IBM Cloud</h4>
 
 <p align="center">
   <a>
@@ -16,6 +16,7 @@
   </a>
 </p>
 <br>
+
 Table of Contents
 =================
 
