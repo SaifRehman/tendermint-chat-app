@@ -22,8 +22,7 @@ Table of Contents
 
    * [Running the Blockchain locally](#running-the-blockchain-locally)
    * [Deploying 2 validators to IBM Cloud](#deploying-two-validator-nodes-on-ibm-cloud)
-   * [Tendermint Api Documentation](#tendermint-api-documentation)
-
+   * [Tendermint Api Documentation](#tendermint-api-documentation-of-cloud-foundry-app)
 
 
 ## Contributors
