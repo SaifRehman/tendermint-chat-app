@@ -24,7 +24,7 @@
     <ion-item>
       <ion-label style="margin:0px;"></ion-label>
       <div item-content style="width:100%;">
-        <ion-textarea placeholder='enter your message' [(ngModel)]="content"></ion-textarea>
+        <ion-textarea placeholder='enter your message' [(ngModel)]="content" (keyup.enter)="sendMessage()"></ion-textarea>
       </div>
     </ion-item>
     <ion-buttons right>
