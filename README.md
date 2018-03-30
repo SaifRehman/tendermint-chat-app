@@ -38,6 +38,68 @@ Table of Contents
 
 This is minimal chat application based on Tendermint Consensus Engine using Lotionjs. It also includes web/mobile application built using Ionic 3.
 
+### Creating Genesis file with 2 validators
+
+1. Navigate to creatingGenesisFile directory
+``` cd creatingGenesisFile ```
+2. Install dependencies
+``` npm i ```
+3. How Genesis file looks currently with no validators
+``` JSON
+{
+    "genesis_time": "0001-01-01T00:00:00Z",
+    "chain_id": "name",
+    "validators": [
+    ],
+    "app_hash": ""
+}
+```
+4. Generate 2 validators
+```
+$ ./node_modules/lotion/bin/tendermint gen_validator > privkey0.json
+$ ./node_modules/lotion/bin/tendermint gen_validator > privkey1.json
+```
+5. How private key looks like, it has public and private key randomly generated
+```JSON
+{
+	"address": "B809574EC51377DE48454094BF3302989CBB50A9",
+	"pub_key": {
+		"type": "ed25519",
+		"data": "8A049817BA6D1B065C30D927A529AAFA7147BE0D147E1CCD7A25FAADBE80C8D0"
+	},
+	"priv_key": {
+		"type": "ed25519",
+		"data": "57BAFDD6136E1140FA9F906313BF2CFC75802F044704DD7AAF30BC1010E6519C8A049817BA6D1B065C30D927A529AAFA7147BE0D147E1CCD7A25FAADBE80C8D0"
+	}
+}
+```
+6. Copy only public key information and paste in genesis.json, this how it will look like in the end after adduing two validators
+```JSON
+{
+    "genesis_time": "0001-01-01T00:00:00Z",
+    "chain_id": "name",
+    "validators": [
+        {
+            "pub_key": {
+                "type": "ed25519",
+                "data": "8A049817BA6D1B065C30D927A529AAFA7147BE0D147E1CCD7A25FAADBE80C8D0"
+            },
+            "power": 10,
+            "name": "saif"
+        },
+        {
+            "pub_key": {
+                "type": "ed25519",
+                "data": "5FD1FBF59759E50BD1C23911E832198AB78A4F7E6F1F23A64AAFEC5992608CA8"
+            },
+            "power": 20,
+            "name": "prerna"
+        }
+    ],
+    "app_hash": ""
+}
+* You add Power and Name of validators as well 
+```
 ### Running the blockchain locally
 1. Navigate to blockchain dir 
 ```
