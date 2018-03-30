@@ -73,6 +73,7 @@ $ ./node_modules/lotion/bin/tendermint gen_validator > privkey1.json
 	}
 }
 ```
+
 6. Copy only public key information and paste in genesis.json, this how it will look like in the end after adduing two validators
 ```JSON
 {
@@ -98,8 +99,9 @@ $ ./node_modules/lotion/bin/tendermint gen_validator > privkey1.json
     ],
     "app_hash": ""
 }
-* You add Power and Name of validators as well 
 ```
+* You add Power and Name of validators as well 
+
 ### Running the blockchain locally
 1. Navigate to blockchain dir 
 ```
