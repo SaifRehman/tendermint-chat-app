@@ -41,9 +41,9 @@ This is minimal chat application based on Tendermint Consensus Engine using Loti
 ### Creating Genesis file with 2 validators
 
 1. Navigate to creatingGenesisFile directory
-``` cd creatingGenesisFile ```
+``` $ cd creatingGenesisFile ```
 2. Install dependencies
-``` npm i ```
+``` $ npm i ```
 3. How Genesis file looks currently with no validators
 ``` JSON
 {
@@ -102,7 +102,7 @@ $ ./node_modules/lotion/bin/tendermint gen_validator > privkey1.json
 ```
 * You add Power and Name of validators as well 
 
-### Running the blockchain locally
+### Running the Blockchain locally
 1. Navigate to localnode dir 
 ```
 $ cd localnode
@@ -131,6 +131,20 @@ app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })
 ```
+4. Open ```frontend/src/pages/congif/config.ts``` , and set to ```localhost:8080```
+```TypeScript
+export class config {
+    public static baseUrl = "http://localhost:8080";
+    public  constructor() {
+    }
+}
+```
+5. Spin up frontend buid in ionic to communicate with the Blockchain
+```
+$ npm i -g ionic cordova
+$ cd frontend
+$ ionic serve
+```
 * Minimal Lotion code to spin up Tendermint with one node/peer
 
 Your tendermint port is 46667
@@ -157,7 +171,7 @@ cd node1
 ```
 6. build docker image
 ``` 
-docker build -t tendermint .
+$ docker build -t tendermint .
 ```
 7. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
 8. Navigate to containers
@@ -183,7 +197,7 @@ $ bx cs region-set eu-central
 14. Set the context for the cluster in in your CLI.
 * Get the command to set the environment variable and download the Kubernetes configuration files.
 ```
-bx cs cluster-config NameOfYourCluster
+$ bx cs cluster-config NameOfYourCluster
 ```
 * Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output should look similar to the following.
 15.  Verify that you can connect to your cluster by listing your worker nodes
