@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/timeoutWith';
 import {config} from '../config/config'
 @Injectable()
 export class HomeService {
@@ -30,7 +32,6 @@ export class HomeService {
         });
         const link = config.baseUrl+'/api/post';
         const senderName = sessionStorage.getItem('name')
-        console.log(senderName);
         const bodyObject = {
             sender: senderName,
             message: text

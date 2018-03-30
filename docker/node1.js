@@ -1,4 +1,4 @@
-require('dotenv').config({path: ".env-node2"});
+require('dotenv').config({path: ".env-node1"});
 let lotion = require('lotion')
 let app = lotion({
   genesis: './genesis.json',
@@ -6,8 +6,8 @@ let app = lotion({
   initialState: { messages: [] },
   p2pPort: 30092,
   logTendermint: true,
-  keys: 'privkey1.json',
-  peers: ['184.173.1.108:30092']
+  keys: 'privkey0.json',
+  peers: ['159.122.175.154:30092']
 })
 app.use((state, tx,chainInfo) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {

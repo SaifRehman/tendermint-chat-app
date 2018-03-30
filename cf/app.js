@@ -8,7 +8,6 @@ expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
 var port = 8080;
-
 expressapp.get('/api/abci_info', cors(), function (req, res) {
   request('http://127.0.0.1:46657/abci_info', function (error, response, body) {
     if (!error) {
@@ -259,16 +258,17 @@ expressapp.listen(port)
 
 console.log('port isssssssssssssss', process.env.PORT )
 let app = require('lotion')({
-  lotionPort: 3000,
-  tendermintPort: 46657,
+  genesis: './genesis.json',
   initialState: { messages: [] },
-  devMode: true
+  tendermintPort: 46657,
+  logTendermint: true,
+  peers: ['ws://159.122.175.154:30090','ws://184.173.1.108:30090'],
 })
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.listen(3000).then(function(data){
-  console.log('data iss',data)
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
 })
