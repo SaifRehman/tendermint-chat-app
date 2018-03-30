@@ -42,7 +42,8 @@
     "serve-index": "^1.9.1",
     "serve-static": "^1.13.2",
     "shea": "0.0.10",
-    "swearjar": "^0.2.0"
+    "swearjar": "^0.2.0",
+    "dotenv": "^5.0.1"
   },
   "devDependencies": {
     "typings": "^2.1.1"

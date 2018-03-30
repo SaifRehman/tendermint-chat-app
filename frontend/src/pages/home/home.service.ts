@@ -24,6 +24,21 @@ export class HomeService {
                 return Observable.throw(error.json().error || 'Server error');
             });
     }
+
+    public getStatus(): Observable<any> {
+        const options = new RequestOptions({
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            })
+        });
+        const link = config.baseUrl+'/api/status';
+        return this.http.get(link, options) // ...using post request
+            .map((res: Response) => res.json())
+            .catch((error: any) => {
+                console.log(error);
+                return Observable.throw(error.json().error || 'Server error');
+            });
+    }
     public post (text: string): Observable<any> {
         const options = new RequestOptions({
             headers: new Headers({

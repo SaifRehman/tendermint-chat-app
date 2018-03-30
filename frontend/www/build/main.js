@@ -84,6 +84,20 @@ var HomeService = (function () {
             return __WEBPACK_IMPORTED_MODULE_1_rxjs__["Observable"].throw(error.json().error || 'Server error');
         });
     };
+    HomeService.prototype.getStatus = function () {
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
+                'Content-Type': 'application/json',
+            })
+        });
+        var link = __WEBPACK_IMPORTED_MODULE_6__config_config__["a" /* config */].baseUrl + '/api/status';
+        return this.http.get(link, options) // ...using post request
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            console.log(error);
+            return __WEBPACK_IMPORTED_MODULE_1_rxjs__["Observable"].throw(error.json().error || 'Server error');
+        });
+    };
     HomeService.prototype.post = function (text) {
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
             headers: new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
@@ -147,7 +161,7 @@ var LoginPage = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-login',template:/*ion-inline-start:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/login/login.html"*/'<ion-content class="login-content" padding>\n    <ion-row class="logo-row">\n      <ion-col></ion-col>\n      <ion-col width-67>\n      </ion-col>\n      <ion-col></ion-col>\n    </ion-row>\n    <div class="login-box">\n        <ion-row>\n          <ion-col>\n            <ion-list inset>\n              <ion-item>\n                <ion-input type="text" placeholder="Name" name="name" [(ngModel)]="name" ></ion-input>\n              </ion-item>\n            </ion-list>\n          </ion-col>\n        </ion-row>\n        <ion-row>\n          <ion-col class="signup-col">\n            <button ion-button class="submit-btn" full type="submit" (click)="enter()">Enter</button>\n          </ion-col>\n        </ion-row>\n        \n    </div>\n  </ion-content>'/*ion-inline-end:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/login/login.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], LoginPage);
     return LoginPage;
 }());
@@ -181,13 +195,20 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 var HomePage = (function () {
-    function HomePage(navCtrl, homeService) {
-        var _this = this;
+    function HomePage(navCtrl, homeService, loadingCtrl) {
         this.navCtrl = navCtrl;
         this.homeService = homeService;
+        this.loadingCtrl = loadingCtrl;
         this.senderName = '';
         this.allData = null;
         this.senderName = sessionStorage.getItem('name');
+        this.con = this.loadingCtrl.create({
+            content: 'Blockchain Synching ....'
+        });
+        this.con.present();
+    }
+    HomePage.prototype.ionViewDidLoad = function () {
+        var _this = this;
         __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].interval(2000).subscribe(function (x) {
             _this.homeService.get().subscribe(function (data) {
                 data = data['messages'].filter(function (n) { return n != null; });
@@ -209,7 +230,16 @@ var HomePage = (function () {
                 console.log(error);
             });
         });
-    }
+        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].interval(5000).subscribe(function (x) {
+            _this.homeService.getStatus().subscribe(function (data) {
+                if (!data['result']['syncing']) {
+                    _this.con.dismiss();
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        });
+    };
     HomePage.prototype.sendMessage = function () {
         var _this = this;
         this.homeService.post(this.content).timeout(2000).subscribe(function (data) {
@@ -221,15 +251,16 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */]),
-        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */])
+        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */]) === "function" && _a || Object)
     ], HomePage.prototype, "contentScroll", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{senderName}}\n    </ion-title>\n    <ion-toggle [(ngModel)]="scroll"></ion-toggle>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="lightGreen">\n  <ng-container *ngIf="allData"> \n  <ion-card *ngFor="let data of allData ">\n        <ion-card-header>\n          {{data.sender}}\n        </ion-card-header>\n        <ion-card-content>\n          {{data.message}}\n        </ion-card-content>\n      </ion-card>\n      </ng-container>\n</ion-content>\n<ion-footer class="chatPageFooter">\n  <ion-toolbar>\n    <ion-item>\n      <ion-label style="margin:0px;"></ion-label>\n      <div item-content style="width:100%;">\n        <ion-textarea placeholder=\'enter your message\' [(ngModel)]="content"></ion-textarea>\n      </div>\n    </ion-item>\n    <ion-buttons right>\n      <button style="min-width:45px;" (click)="sendMessage()">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */]])
+        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object])
     ], HomePage);
     return HomePage;
+    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
@@ -327,7 +358,7 @@ var AppModule = (function () {
 var config = (function () {
     function config() {
     }
-    config.baseUrl = "http://tendermint-chat-app.mybluemix.net";
+    config.baseUrl = "http://localhost:8080";
     return config;
 }());
 
@@ -370,7 +401,7 @@ var MyApp = (function () {
     MyApp = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/app/app.html"*/
         }),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
     return MyApp;
 }());
