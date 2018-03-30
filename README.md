@@ -1,3 +1,21 @@
+<h1 align="center">
+  <br>
+  <a href="https://github.com/SaifRehman/tendermint-chat-app"><img src="https://cdn-images-1.medium.com/max/1600/1*-wHwSlJ-CFlKK25T4peltA.jpeg" alt="Lotion" width="IBM"></a>
+  <br>
+      Blockchain Chat App
+  <br>
+  <br>
+</h1>
+
+<h4 align="center">Blockchain Chat App with ✨ Lotion ✨ and IBM Cloud</h4>
+
+<p align="center">
+  <a>
+    <img src="https://img.shields.io/travis/keppel/lotion/master.svg"
+         alt="Travis Build">
+  </a>
+</p>
+<br>
 Table of Contents
 =================
 
