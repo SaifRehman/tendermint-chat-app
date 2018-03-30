@@ -103,54 +103,48 @@ $ ./node_modules/lotion/bin/tendermint gen_validator > privkey1.json
 * You add Power and Name of validators as well 
 
 ### Running the blockchain locally
-1. Navigate to blockchain dir 
+1. Navigate to localnode dir 
 ```
-$ cd cf
+$ cd localnode
 ```
 2. Install dependencies 
 ```
 $ npm i 
 ```
 3. Run the Blockchain
-``` 
-$ node app.js
 ```
-
-![3](img/3.png)
+$ node node1.js
+```
+```JavaScript
+let lotion = require('lotion')
+let app = lotion({
+  tendermintPort: 46657,
+  initialState: { messages: [] },
+  logTendermint: true,
+})
+app.use((state, tx,chainInfo) => {
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
+  }
+})
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
+})
+```
+* Minimal Lotion code to spin up Tendermint with one node/peer
 
 Your tendermint port is 46667
 
-1. Endpoint: http://localhost:8080/get (GET), shows current data in blockchain
-2. Endpoint: http://localhost:8080/post (POST), post new data in blockchain
+1. Endpoint: http://localhost:3000/state (GET), shows current data in blockchain
+2. Endpoint: http://localhost:3000/txs (POST), post new data in blockchain
 3. Endpoint: http://localhost:46657/ , access available Apis provided by Tendermint RPC 
 
 ![4](img/4.png)
 
-End points available through ABCI (Application blockchain interface) :)
+* End points available through ABCI (Application blockchain interface) :)
 
 How simple can that be?
 
-## Run FrontEnd Mobile Application locally
-1. Navigate to frontend dir
-```
-$ cd frontend
-```
-2. Install dependencies
-```
-$ npm i
-```
-3. Install ionic cli 
-```
-$ npm i -g ionic cordova
-```
-4. Run the app
-```
-$ ionic serve
-```
-5. App running on port 8100
-```
-http://localhost:8100
-```
 ## CORS Issue Fix 
 If you face error as such 
 ![error](img/error.png)
@@ -188,9 +182,21 @@ $ docker stop containerid
 $ docker rm containerid
 ```
 
-## Deploying to IBM Cloud as a Cloud Foundry application
+## Deploying two validator nodes/peers on IBM Cloud
 1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
+3. Install [Bluemix CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html#getting-started)
+4. Navigate to node1 directory 
+```
+cd node1
+```
+5. build docker image
+``` 
+docker build -t tendermint .
+```
+6. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
+7. Navigate to containers
+![1](img/1.png)
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
 ```
