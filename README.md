@@ -21,7 +21,7 @@ Table of Contents
 =================
 
    * [Running the Blockchain locally](#running-the-blockchain-locally)
-   * [Deploying 2 validators to IBM Cloud](#deploying-two-validator-nodes/peers-on-ibm-cloud)
+   * [Deploying 2 validators to IBM Cloud](#deploying-two-validator-nodes-on-ibm-cloud)
    * [Tendermint Api Documentation](#tendermint-api-documentation)
 
 
@@ -156,7 +156,7 @@ Your tendermint port is 46667
 
 How simple can that be?
 
-## Deploying two validator nodes/peers on IBM Cloud
+### Deploying two validator nodes on IBM Cloud
 1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 3. Install [Bluemix CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html#getting-started)
@@ -306,7 +306,7 @@ $ ionic cordova build browser
 $ cf push
 ```
 
-## Tendermint Api Documentation of Cloud Foundry App
+### Tendermint Api Documentation of Cloud Foundry App
 | Endpoint      | Type          | Payload|
 | ------------- |:-------------:| -----:|
 | /api/get    | GET | - |
