@@ -186,24 +186,48 @@ $ docker rm containerid
 1. Signup to [IBM Cloud](http://ibm.biz/ioblockchain)
 2. Install [Cloud Foundry CLI](https://docs.cloudfoundry.org/cf-cli/install-go-cli.html)
 3. Install [Bluemix CLI](https://console.bluemix.net/docs/cli/reference/bluemix_cli/get_started.html#getting-started)
-4. Navigate to node1 directory 
+4. Install [Kubernetes CLI](https://kubernetes.io/docs/user-guide/prereqs/)
+
+5. Navigate to node1 directory 
 ```
 cd node1
 ```
-5. build docker image
+6. build docker image
 ``` 
 docker build -t tendermint .
 ```
-6. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
-7. Navigate to containers
+7. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
+8. Navigate to containers
 ![1](img/1.png)
 
-8. Click on create new cluster
+9. Click on create new cluster
 ![10](img/10.png)
 
-9. Name your cluster and create a cluster, wiat for few minutes to get it fully deployed. After it is fully deployed click on the cluster
+10. Name your cluster and create a cluster, wiat for few minutes to get it fully deployed. After it is fully deployed click on the cluster
 ![11](img/11.png)
-
+ 
+* This shows overview of your deployed cluster 
+11. Click on Access tab and follow the instruction on the website
+12. Install the container service plugin.
+```
+$ bx plugin install container-service -r Bluemix
+```
+13. Log in to your IBM Cloud account.
+```
+$ bx login -a https://api.eu-de.bluemix.net
+$ bx cs region-set eu-central
+```
+14. Set the context for the cluster in in your CLI.
+* Get the command to set the environment variable and download the Kubernetes configuration files.
+```
+bx cs cluster-config NameOfYourCluster
+```
+* Set the KUBECONFIG environment variable. Copy the output from the previous command and paste it in your terminal. The command output should look similar to the following.
+15.  Verify that you can connect to your cluster by listing your worker nodes
+```
+$  kubectl get nodes
+```
+16. Go to your [IBM Cloud Private Registery](https://console.bluemix.net/containers-kubernetes/registry/private)
 
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
