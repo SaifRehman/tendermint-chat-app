@@ -20,7 +20,7 @@
 Table of Contents
 =================
 
-   * [Running the blockchain locally](#running-the-blockchain-locally)
+   * [Running the Blockchain locally](#running-the-blockchain-locally)
    * [Run FrontEnd Mobile Application locally](#run-frontend-mobile-application-locally)
    * [Deploying to IBM Cloud as a Cloud Foundry application](#deploying-to-ibm-cloud-as-a-cloud-foundry-application)
    * [Cors issue fix](#cors-issue-fix)
@@ -155,6 +155,32 @@ $ ionic cordova build browser
 ```
 $ cf push
 ```
+
+## Tendermint Api Documentation
+| Endpoint      | Type          | Payload|
+| ------------- |:-------------:| -----:|
+| /api/get    | GET | - |
+| /api/abci_info    | GET | - |
+| /api/dump_consensus_state     | GET      |   - |
+| /api/genesis | GET      |    - |
+| /api/net_info | GET   |    -|
+| /api/num_unconfirmed_txs| GET     |   - |
+| /api/status| GET     |    - |
+| /api/unconfirmed_txs | GET     |   - |
+| /api/abci_query | POST      |    {"path":"","data":"","height":0,"prove":""} |
+| /api/block |POST     |    {"height":0} |
+| /api/block_results |POST      |     {"height":0} |
+| /api/blockchain| POST      |    {"minHeight":0,"maxHeight":100} |
+| /api/broadcast_tx_async|POST     |    {"tx":""}|
+| /api/broadcast_tx_commit | POST     |    {"tx":""} |
+| /api/broadcast_tx_sync | POST      |    {"tx":""} |
+| /api/commit |POST    |     {"height":0}|
+| /api/subscribe |POST      |    {"query":""} |
+| /api/tx | POST      |    {"hash":"","prove":""}  |
+| /api/tx_search' | POST     |    {"query":"","prove":""} |
+| /api/post    | POST | {"sender":"","message":""} |
+
+
 
 ## Screenshot of App
 
