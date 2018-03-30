@@ -197,6 +197,12 @@ docker build -t tendermint .
 6. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
 7. Navigate to containers
 ![1](img/1.png)
+
+8. Click on create new cluster
+![10](img/10.png)
+
+9. Name your cluster and create a cluster, wiat for few minutes to get it fully deployed
+
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
 ```
