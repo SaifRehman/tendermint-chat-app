@@ -227,12 +227,90 @@ bx cs cluster-config NameOfYourCluster
 ```
 $  kubectl get nodes
 ```
-16. Go to your [IBM Cloud Private Registery](https://console.bluemix.net/containers-kubernetes/registry/private)
+16. Go to your [IBM Cloud Registery](https://console.bluemix.net/containers-kubernetes/registry/private)
+17. Choose a name for your first namespace, and create that namespace.
+```
+$ bx cr namespace-add <my_namespace>
+```
+18. Log your local Docker daemon into the IBM Cloud Container Registry.
+```
+$ bx cr login
+```
+19. Choose a repository and tag by which you can identify the image. Use the same repository and tag for the rest of this Quick Start.
+```
+$ docker tag hello-world registry.ng.bluemix.net/<my_namespace>/node1:latest
+```
+20. Push the image.
+```
+$ docker push registry.ng.bluemix.net/<my_namespace>/node1:latest
+```
+21. Verify that your image is in your private registry.
+```
+$ bx cr image-list
+```
+22. Now your container is deployed on IBM Container, it is time to spin up some pods using kubernetes
+* Change image name accordinglly from private name of your registry, just copy/paste :)
+```YAML
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: tendermintnodeone # give any name
+spec:
+ replicas: 1
+ template:
+   metadata:
+     name: tendermintnodeone
+     labels:
+       run: tendermint1
+   spec:
+     containers:
+       - name: saif1cluster
+         image: "registry.eu-de.bluemix.net/<namespace>/node2" # your registery name
+         imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: my-service-tendermint-11 # give a service name
+ labels:
+   run: tendermint1
+spec:
+ type: NodePort
+ selector:
+   run: tendermint1
+ ports:
+  - protocol: TCP
+    name: tendermint1
+    port: 30090  # it shall be 8545 and no other port !!!!!
+    nodePort: 30090  # Give a port to access the application publically
+  - protocol: TCP
+    name: port
+    port: 30092  # it shall be 8545 and no other port !!!!!
+    nodePort: 30092  # Give a port to access the application publically
+```
+23. Configure Kubernetes, to create pods, services, and deployments
+```
+$ kubctl create -f service-deployment.yml
+```
+24. delete all deployments
+```
+$ kubctl delete deployments --all 
+```
+25. delete all services
+```
+$ kubctl delete services --all 
+```
+26. Follow same procesdure with node2 with dofferent name
+27. Access pods and logs
+```
+$ kubctl get pods
+$ kubctl logs podname
+```
 
 3. Open ```manifest.yml``` and give app a name
 4. Open command line and type 
 ```
-$ cf login -a https://api.ng.bluemix.net -u <ibm.com id>
+$ cf login -a https://api.ng.bluemix.net -u <yourid>
 ``` 
 5. Navigate to ```cf``` directory 
 ```
@@ -258,7 +336,7 @@ $ ionic cordova build browser
 $ cf push
 ```
 
-## Tendermint Api Documentation
+## Tendermint Api Documentation of Cloud Foundry App
 | Endpoint      | Type          | Payload|
 | ------------- |:-------------:| -----:|
 | /api/get    | GET | - |
