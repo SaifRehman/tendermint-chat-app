@@ -211,11 +211,11 @@ $ bx cr login
 ```
 19. Choose a repository and tag by which you can identify the image. Use the same repository and tag for the rest of this Quick Start.
 ```
-$ docker tag node1 registry.ng.bluemix.net/<my_namespace>/node1:latest
+$ docker tag node1 <registery>/<my_namespace>/node1:latest
 ```
 20. Push the image.
 ```
-$ docker push registry.ng.bluemix.net/<my_namespace>/node1:latest
+$ docker push <registery>/<my_namespace>/node1:latest
 ```
 21. Verify that your image is in your private registry.
 ```
