@@ -238,7 +238,7 @@ spec:
    spec:
      containers:
        - name: saif1cluster
-         image: "registry.eu-de.bluemix.net/<namespace>/node2" # your registery name
+         image: "<registery>/<my_namespace>/node1:latest" # your registery name
          imagePullPolicy: Always
 ---
 apiVersion: v1
