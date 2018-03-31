@@ -163,7 +163,7 @@ How simple can that be?
 
 5. Navigate to node1 directory 
 ```
-cd node1
+$ cd node1
 ```
 6. build docker image
 ``` 
@@ -211,7 +211,7 @@ $ bx cr login
 ```
 19. Choose a repository and tag by which you can identify the image. Use the same repository and tag for the rest of this Quick Start.
 ```
-$ docker tag hello-world registry.ng.bluemix.net/<my_namespace>/node1:latest
+$ docker tag node1 registry.ng.bluemix.net/<my_namespace>/node1:latest
 ```
 20. Push the image.
 ```
