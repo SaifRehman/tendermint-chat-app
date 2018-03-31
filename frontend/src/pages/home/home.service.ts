@@ -5,24 +5,21 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/timeoutWith';
 import {config} from '../config/config'
-import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
+import { IEnvironmentalVariables } from '../../config/env.variables';
 
 @Injectable()
 export class HomeService {
     constructor(
-        private http: Http,
-        @Inject(EnvVariables) public envVariables
-    ){
-        console.log('loggggssssssssss',envVariables.apiEndpoint)
-     }
+        private http: Http
+    ){ 
+    }
     public get(): Observable<any> {
         const options = new RequestOptions({
             headers: new Headers({
                 'Content-Type': 'application/json',
             })
         });
-        const link = this.envVariables.apiEndpoint+'/api/get';
-        console.log(link);
+        const link = config.baseUrl+'/api/get';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -37,7 +34,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = this.envVariables.apiEndpoint+'/api/status';
+        const link = config.baseUrl+'/api/status';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {

@@ -8,7 +8,7 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import {HttpModule} from '@angular/http';
-import { EnvironmentsModule } from './environment-variables/environment-variables.module';
+import { EnvironmentsModule } from '../config/environment.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,6 @@ import { EnvironmentsModule } from './environment-variables/environment-variable
   imports: [
     BrowserModule,
     HttpModule,
-    EnvironmentsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
