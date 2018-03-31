@@ -1,22 +1,28 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/timeoutWith';
 import {config} from '../config/config'
+import { EnvVariables } from '../../app/environment-variables/environment-variables.token';
+
 @Injectable()
 export class HomeService {
     constructor(
-        private http: Http
-    ){ }
+        private http: Http,
+        @Inject(EnvVariables) public envVariables
+    ){
+        console.log('loggggssssssssss',envVariables.apiEndpoint)
+     }
     public get(): Observable<any> {
         const options = new RequestOptions({
             headers: new Headers({
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/get';
+        const link = this.envVariables.apiEndpoint+'/api/get';
+        console.log(link);
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -31,7 +37,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/status';
+        const link = this.envVariables.apiEndpoint+'/api/status';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
