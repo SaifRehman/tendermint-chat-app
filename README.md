@@ -167,7 +167,7 @@ cd node1
 ```
 6. build docker image
 ``` 
-$ docker build -t tendermint .
+$ docker build -t node1 .
 ```
 7. Go to [IBM Cloud console](https://console.bluemix.net/dashboard/apps/)
 8. Navigate to containers
