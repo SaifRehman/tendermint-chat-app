@@ -1,13 +1,18 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Headers, Http, RequestOptions, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/observable/throw';
+import 'rxjs/add/operator/timeoutWith';
 import {config} from '../config/config'
+import { IEnvironmentalVariables } from '../../config/env.variables';
+
 @Injectable()
 export class HomeService {
     constructor(
         private http: Http
-    ){ }
+    ){ 
+    }
     public get(): Observable<any> {
         const options = new RequestOptions({
             headers: new Headers({
@@ -15,6 +20,21 @@ export class HomeService {
             })
         });
         const link = config.baseUrl+'/api/get';
+        return this.http.get(link, options) // ...using post request
+            .map((res: Response) => res.json())
+            .catch((error: any) => {
+                console.log(error);
+                return Observable.throw(error.json().error || 'Server error');
+            });
+    }
+
+    public getStatus(): Observable<any> {
+        const options = new RequestOptions({
+            headers: new Headers({
+                'Content-Type': 'application/json',
+            })
+        });
+        const link = config.baseUrl+'/api/status';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -30,7 +50,6 @@ export class HomeService {
         });
         const link = config.baseUrl+'/api/post';
         const senderName = sessionStorage.getItem('name')
-        console.log(senderName);
         const bodyObject = {
             sender: senderName,
             message: text
