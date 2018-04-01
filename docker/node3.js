@@ -4,10 +4,10 @@ let shea = require('shea')
 let app = require('lotion')({
     genesis: './genesis.json',
     initialState: { messages: [] },
-    p2pPort: 30093,
-    tendermintPort: 30094,
+    p2pPort: 30095,
+    tendermintPort: 30096,
     logTendermint: true,
-    peers: ['159.122.175.154:30092'],
+    peers: ['168.1.149.33:30092'],
     keys: 'privkey1.json',
   })
   app.use((state, tx) => {

@@ -5,4 +5,4 @@ COPY privkey1.json ./
 RUN npm install
 COPY . .
 EXPOSE 30090 30092
-CMD [ "node", "node1.js" ]
+CMD [ "node", "node1.js","node2.js","node3.js"]
