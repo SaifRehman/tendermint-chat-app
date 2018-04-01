@@ -4,7 +4,7 @@ let app = lotion({
   tendermintPort: 30090,
   initialState: { messages: [] },
   p2pPort: 30092,
-  logTendermint: true
+  logTendermint: true,
 })
 app.use((state, tx,chainInfo) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
