@@ -1,7 +1,6 @@
 require('dotenv').config({path: ".env-node3"});
 let lotion = require('lotion')
 let app = lotion({
-  genesis: './genesis.json',
   tendermintPort: 30090,
   initialState: { messages: [] },
   p2pPort: 30092,
