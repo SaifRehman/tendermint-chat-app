@@ -3,13 +3,13 @@ let app = require('lotion')({
   initialState: { messages: [] },
   tendermintPort: 46657,
   logTendermint: true,
-  peers: ['ws://184.173.1.108:30090','ws://159.122.175.154:30090',"ws://168.1.149.33:30090"],
+  peers: ['ws://184.173.1.108:30090','ws://159.122.175.154:30090'],
 })
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.listen(3003).then(({ GCI }) => {
+app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })

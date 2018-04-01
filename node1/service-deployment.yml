@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+ name: tendermintnodeone # give any name
+spec:
+ replicas: 1
+ template:
+   metadata:
+     name: tendermintnodeone
+     labels:
+       run: tendermint1
+   spec:
+     containers:
+       - name: saif1cluster
+         image: "registry.eu-de.bluemix.net/<namespace>/node2" # your registery name
+         imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+ name: my-service-tendermint-11 # give a service name
+ labels:
+   run: tendermint1
+spec:
+ type: NodePort
+ selector:
+   run: tendermint1
+ ports:
+  - protocol: TCP
+    name: tendermint1
+    port: 30090  # it shall be 8545 and no other port !!!!!
+    nodePort: 30090  # Give a port to access the application publically
+  - protocol: TCP
+    name: port
+    port: 30092  # it shall be 8545 and no other port !!!!!
+    nodePort: 30092  # Give a port to access the application publically
