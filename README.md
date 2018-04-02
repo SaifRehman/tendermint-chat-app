@@ -125,6 +125,11 @@ $ npm i -g ionic cordova
 $ cd frontend
 $ ionic serve
 ```
+
+
+### Examples
+
+#### Minimum code to run lotion as one node
 ```JavaScript
 let lotion = require('lotion')
 let app = lotion({
@@ -141,10 +146,7 @@ app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })
 ```
-* Minimal Lotion code to spin up Tendermint with one node/peer
-
 Your tendermint port is 46667
-
 1. Endpoint: http://localhost:3000/state (GET), shows current data in blockchain
 2. Endpoint: http://localhost:3000/txs (POST), post new data in blockchain
 3. Endpoint: http://localhost:46657/ , access available Apis provided by Tendermint RPC 
@@ -152,6 +154,78 @@ Your tendermint port is 46667
 ![4](img/4.png)
 
 * End points available through ABCI (Application blockchain interface) :)
+
+#### Running 2 Validators 
+
+* Node1
+```JavaScript
+require('dotenv').config({path: ".env-node1"});
+let lotion = require('lotion')
+let app = lotion({
+  genesis: './genesis.json',
+  tendermintPort: 30090,
+  initialState: { messages: [] },
+  p2pPort: 30092,
+  logTendermint: true,
+  keys: 'privkey0.json',
+  peers: ['ip:peerport']
+})
+app.use((state, tx,chainInfo) => {
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
+  }
+})
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
+})
+```
+
+* Node 2
+```JavaScript
+require('dotenv').config({path: ".env-node2"});
+let lotion = require('lotion')
+let app = lotion({
+  genesis: './genesis.json',
+  tendermintPort: 30090,
+  initialState: { messages: [] },
+  p2pPort: 30092,
+  logTendermint: true,
+  keys: 'privkey1.json',
+  peers: ['ip:peerport']
+})
+app.use((state, tx,chainInfo) => {
+  if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
+    state.messages.push({ sender: tx.sender, message: tx.message })
+  }
+})
+app.listen(3000).then(({ GCI }) => {
+  console.log(GCI)
+})
+```
+* To send txs locally through genesis file
+```JavaScript
+let { connect } = require('lotion')
+async function main() {
+  let { send } = await connect(null, { genesis: require('./genesis.json'),
+   nodes: [ip:tendermintport] })
+  console.log(await send({ sender: 'sendername', message: 'message' }))
+  process.exit();
+}
+main()
+```
+
+* Getting current state of the Blockchain
+
+```JavaScript
+let { connect } = require('lotion')
+async function main() {
+  let { state } = await connect(null, { genesis: require('./genesis.json'),
+   nodes: [ip:tendermintport] })
+  console.log(await state.message)
+  process.exit();
+}
+main()
+```
 
 How simple can that be?
 
