@@ -111,6 +111,20 @@ $ npm i
 ```
 $ node node1.js
 ```
+4. Open ```frontend/src/pages/congif/config.ts``` , and set to ```localhost:8080```
+```TypeScript
+export class config {
+    public static baseUrl = "http://localhost:8080";
+    public  constructor() {
+    }
+}
+```
+5. Spin up frontend buid in ionic to communicate with the Blockchain
+```
+$ npm i -g ionic cordova
+$ cd frontend
+$ ionic serve
+```
 ```JavaScript
 let lotion = require('lotion')
 let app = lotion({
@@ -126,20 +140,6 @@ app.use((state, tx,chainInfo) => {
 app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })
-```
-4. Open ```frontend/src/pages/congif/config.ts``` , and set to ```localhost:8080```
-```TypeScript
-export class config {
-    public static baseUrl = "http://localhost:8080";
-    public  constructor() {
-    }
-}
-```
-5. Spin up frontend buid in ionic to communicate with the Blockchain
-```
-$ npm i -g ionic cordova
-$ cd frontend
-$ ionic serve
 ```
 * Minimal Lotion code to spin up Tendermint with one node/peer
 
