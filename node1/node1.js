@@ -1,4 +1,5 @@
 require('dotenv').config({path: ".env-node1"});
+let shea = require('shea')
 let lotion = require('lotion')
 let app = lotion({
   genesis: './genesis.json',
@@ -14,6 +15,8 @@ app.use((state, tx,chainInfo) => {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
+app.use(shea('www/'))
+
 app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })
