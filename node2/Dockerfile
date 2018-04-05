@@ -6,5 +6,5 @@ COPY .env-node2 ./
 COPY www ./
 RUN npm install
 COPY . .
-EXPOSE 30090 30092
+EXPOSE 30090 30092 7777
 CMD [ "node", "node2.js" ]
