@@ -73,5 +73,4 @@ export class HomePage {
         this.content = '';
       })
   }
-
 }
