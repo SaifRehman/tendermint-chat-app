@@ -19,7 +19,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/get';
+        const link = config.baseUrl+'/state';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -34,7 +34,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/status';
+        const link = config.baseUrl+'/status';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
@@ -48,7 +48,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/post';
+        const link = config.baseUrl+'/txs';
         const senderName = sessionStorage.getItem('name')
         const bodyObject = {
             sender: senderName,

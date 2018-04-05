@@ -19,15 +19,16 @@ export class HomePage {
   public con:any;
   constructor(public navCtrl: NavController, public homeService: HomeService, public loadingCtrl: LoadingController) {
     this.senderName = sessionStorage.getItem('name');
-    this.con = this.loadingCtrl.create({
-      content: 'Blockchain Synching ....'
-    });
-    this.con.present();
+    // this.con = this.loadingCtrl.create({
+    //   content: 'Blockchain Synching ....'
+    // });
+    // this.con.present();
   }
 
   ionViewDidLoad() {
 
-    Observable.interval(2000).subscribe(x => {
+    Observable.interval(4000).subscribe(x => {
+      console.log('get message');
       this.homeService.get().subscribe((data) => {
         data = data['messages'].filter(function (n) { return n != null });
         this.allData = data;
@@ -50,20 +51,21 @@ export class HomePage {
         })
     });
 
-    Observable.interval(5000).subscribe(x => {
-      this.homeService.getStatus().subscribe((data) => {
-        if (!data['result']['syncing']) {
-          this.con.dismiss();
-        }
-      },
-        (error) => {
-          console.log(error)
-        })
-    });
+    // Observable.interval(5000).subscribe(x => {
+    //   this.homeService.getStatus().subscribe((data) => {
+    //     if (!data['result']['syncing']) {
+    //       this.con.dismiss();
+    //     }
+    //   },
+    //     (error) => {
+    //       console.log(error)
+    //     })
+    // });
   }
   
   sendMessage() {
-    this.homeService.post(this.content).timeout(2000).subscribe((data) => {
+    console.log('sending message');
+    this.homeService.post(this.content).timeout(5000).subscribe((data) => {
       this.content = '';
     },
       (error) => {
