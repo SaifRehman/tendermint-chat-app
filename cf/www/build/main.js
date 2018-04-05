@@ -71,6 +71,18 @@ var HomeService = (function () {
         this.http = http;
     }
     HomeService.prototype.get = function () {
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
+                'Content-Type': 'application/json',
+            })
+        });
+        var link = __WEBPACK_IMPORTED_MODULE_6__config_config__["a" /* config */].baseUrl + '/state';
+        return this.http.get(link, options) // ...using post request
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            console.log(error);
+            return __WEBPACK_IMPORTED_MODULE_1_rxjs__["Observable"].throw(error.json().error || 'Server error');
+        });
     };
     HomeService.prototype.getStatus = function () {
         var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
@@ -78,7 +90,7 @@ var HomeService = (function () {
                 'Content-Type': 'application/json',
             })
         });
-        var link = __WEBPACK_IMPORTED_MODULE_6__config_config__["a" /* config */].baseUrl + '/api/status';
+        var link = __WEBPACK_IMPORTED_MODULE_6__config_config__["a" /* config */].baseUrl + '/status';
         return this.http.get(link, options) // ...using post request
             .map(function (res) { return res.json(); })
             .catch(function (error) {
@@ -87,14 +99,23 @@ var HomeService = (function () {
         });
     };
     HomeService.prototype.post = function (text) {
-        return fetch('/txs', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify(text)
-        }).then(function (res) { return res.json(); });
+        var options = new __WEBPACK_IMPORTED_MODULE_2__angular_http__["d" /* RequestOptions */]({
+            headers: new __WEBPACK_IMPORTED_MODULE_2__angular_http__["a" /* Headers */]({
+                'Content-Type': 'application/json',
+            })
+        });
+        var link = __WEBPACK_IMPORTED_MODULE_6__config_config__["a" /* config */].baseUrl + '/txs';
+        var senderName = sessionStorage.getItem('name');
+        var bodyObject = {
+            sender: senderName,
+            message: text
+        };
+        return this.http.post(link, bodyObject, options) // ...using post request
+            .map(function (res) { return res.json(); })
+            .catch(function (error) {
+            console.log(error);
+            return __WEBPACK_IMPORTED_MODULE_1_rxjs__["Observable"].throw(error.json().error || 'Server error');
+        });
     };
     HomeService = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
@@ -188,34 +209,27 @@ var HomePage = (function () {
     }
     HomePage.prototype.ionViewDidLoad = function () {
         var _this = this;
-        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].interval(2000).subscribe(function (x) {
+        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].interval(4000).subscribe(function (x) {
             console.log('get message');
-            return fetch('/state').then(function (res) {
-                console.log(res);
-                console.log(res.json());
-                _this.allData = res.json();
-                console.log(_this.allData);
+            _this.homeService.get().subscribe(function (data) {
+                data = data['messages'].filter(function (n) { return n != null; });
+                _this.allData = data;
+                if (_this.scroll) {
+                    if (sessionStorage.getItem('allData') === null || sessionStorage.getItem('allData') === undefined) {
+                        sessionStorage.setItem('allData', JSON.stringify(_this.allData));
+                    }
+                    else {
+                        _this.temp = sessionStorage.getItem('allData'),
+                            _this.temp = JSON.parse(_this.temp);
+                        if (_this.temp.length !== _this.allData.length) {
+                            sessionStorage.setItem('allData', JSON.stringify(_this.allData));
+                            _this.contentScroll.scrollToBottom();
+                        }
+                    }
+                }
+            }, function (error) {
+                console.log(error);
             });
-            // this.homeService.get().subscribe((data) => {
-            //   data = data['messages'].filter(function (n) { return n != null });
-            //   this.allData = data;
-            //   if (this.scroll) {
-            //     if (sessionStorage.getItem('allData') === null || sessionStorage.getItem('allData') === undefined) {
-            //       sessionStorage.setItem('allData', JSON.stringify(this.allData))
-            //     }
-            //     else {
-            //       this.temp = sessionStorage.getItem('allData'),
-            //         this.temp = JSON.parse(this.temp)
-            //       if (this.temp.length !== this.allData.length) {
-            //         sessionStorage.setItem('allData', JSON.stringify(this.allData))
-            //         this.contentScroll.scrollToBottom();
-            //       }
-            //     }
-            //   }
-            // },
-            //   (error) => {
-            //     console.log(error)
-            //   })
         });
         // Observable.interval(5000).subscribe(x => {
         //   this.homeService.getStatus().subscribe((data) => {
@@ -229,24 +243,13 @@ var HomePage = (function () {
         // });
     };
     HomePage.prototype.sendMessage = function () {
+        var _this = this;
         console.log('sending message');
-        //   this.homeService.post(this.content).timeout(2000).subscribe((data) => {
-        //     this.content = '';
-        //   },
-        //     (error) => {
-        //       console.log(error)
-        //       this.content = '';
-        //     })
-        // }
-        return fetch('/txs', {
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            body: JSON.stringify({ "sender": "saif", "message": "hello" })
-        }).then(function (res) {
-            console.log('sent');
+        this.homeService.post(this.content).timeout(5000).subscribe(function (data) {
+            _this.content = '';
+        }, function (error) {
+            console.log(error);
+            _this.content = '';
         });
     };
     __decorate([
@@ -357,7 +360,7 @@ var AppModule = (function () {
 var config = (function () {
     function config() {
     }
-    config.baseUrl = "http://tendermint-chat-app.mybluemix.net";
+    config.baseUrl = "http://localhost:3000";
     return config;
 }());
 

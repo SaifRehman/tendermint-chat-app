@@ -382,26 +382,26 @@ $ cf push
 ### Tendermint Api Documentation of Cloud Foundry App
 | Endpoint      | Type          | Payload|
 | ------------- |:-------------:| -----:|
-| /api/get    | GET | - |
-| /api/abci_info    | GET | - |
-| /api/dump_consensus_state     | GET      |   - |
-| /api/genesis | GET      |    - |
-| /api/net_info | GET   |    -|
-| /api/num_unconfirmed_txs| GET     |   - |
-| /api/status| GET     |    - |
-| /api/unconfirmed_txs | GET     |   - |
-| /api/abci_query | POST      |    {"path":"","data":"","height":0,"prove":""} |
-| /api/block |POST     |    {"height":0} |
-| /api/block_results |POST      |     {"height":0} |
-| /api/blockchain| POST      |    {"minHeight":0,"maxHeight":100} |
-| /api/broadcast_tx_async|POST     |    {"tx":""}|
-| /api/broadcast_tx_commit | POST     |    {"tx":""} |
-| /api/broadcast_tx_sync | POST      |    {"tx":""} |
-| /api/commit |POST    |     {"height":0}|
-| /api/subscribe |POST      |    {"query":""} |
-| /api/tx | POST      |    {"hash":"","prove":""}  |
-| /api/tx_search' | POST     |    {"query":"","prove":""} |
-| /api/post    | POST | {"sender":"","message":""} |
+| /state    | GET | - |
+| /abci_info    | GET | - |
+| /dump_consensus_state     | GET      |   - |
+| /genesis | GET      |    - |
+| /net_info | GET   |    -|
+| /num_unconfirmed_txs| GET     |   - |
+| /status| GET     |    - |
+| /unconfirmed_txs | GET     |   - |
+| /abci_query | POST      |    {"path":"","data":"","height":0,"prove":""} |
+| /block |POST     |    {"height":0} |
+| /block_results |POST      |     {"height":0} |
+| /blockchain| POST      |    {"minHeight":0,"maxHeight":100} |
+| /broadcast_tx_async|POST     |    {"tx":""}|
+| /broadcast_tx_commit | POST     |    {"tx":""} |
+| /broadcast_tx_sync | POST      |    {"tx":""} |
+| /commit |POST    |     {"height":0}|
+| /subscribe |POST      |    {"query":""} |
+| /tx | POST      |    {"hash":"","prove":""}  |
+| /tx_search' | POST     |    {"query":"","prove":""} |
+| /txs    | POST | {"sender":"","message":""} |
 
 
 

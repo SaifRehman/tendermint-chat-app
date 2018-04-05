@@ -34,7 +34,7 @@ export class HomeService {
                 'Content-Type': 'application/json',
             })
         });
-        const link = config.baseUrl+'/api/status';
+        const link = config.baseUrl+'/status';
         return this.http.get(link, options) // ...using post request
             .map((res: Response) => res.json())
             .catch((error: any) => {
