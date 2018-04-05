@@ -1,5 +1,5 @@
 export class config {
-    public static baseUrl = "http://tendermint-chat-app.mybluemix.net";
+    public static baseUrl = "http://localhost:7777";
     public  constructor() {
     }
 }

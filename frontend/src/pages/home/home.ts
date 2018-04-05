@@ -28,6 +28,7 @@ export class HomePage {
   ionViewDidLoad() {
 
     Observable.interval(2000).subscribe(x => {
+      console.log('get message');
       this.homeService.get().subscribe((data) => {
         data = data['messages'].filter(function (n) { return n != null });
         this.allData = data;
@@ -63,6 +64,7 @@ export class HomePage {
   }
   
   sendMessage() {
+    console.log('sending message');
     this.homeService.post(this.content).timeout(2000).subscribe((data) => {
       this.content = '';
     },
@@ -71,4 +73,5 @@ export class HomePage {
         this.content = '';
       })
   }
+
 }
