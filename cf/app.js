@@ -7,6 +7,8 @@ var bodyParser = require('body-parser');
 expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
+let shea = require('shea')
+
 require('dotenv').config({path: ".env-node3"});
 
 var port = 8080;
@@ -258,12 +260,14 @@ expressapp.post('/api/post', cors(), function (req, res) {
 });
 expressapp.listen(port)
 let app = require('lotion')({
-  genesis: './genesis.json',
+  // genesis: './genesis.json',
   initialState: { messages: [] },
   tendermintPort: 46657,
   logTendermint: true,
-  peers: ['ws://159.122.175.154:30092','ws://184.173.1.108:30092']
+  // peers: ['ws://159.122.175.154:30092','ws://184.173.1.108:30092']
 })
+app.use(shea('www/'))
+
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
     state.messages.push({ sender: tx.sender, message: tx.message })
