@@ -14,6 +14,6 @@ app.use((state, tx,chainInfo) => {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.listen(3002).then(({ GCI }) => {
+app.listen(3001).then(({ GCI }) => {
   console.log(GCI)
 })

@@ -7,7 +7,7 @@
     p2pPort: 30092,
     logTendermint: true,
     keys: 'privkey0.json',
-    peers: ['159.122.175.154:30092']
+    peers: ['localhost:30093']
   })
   app.use((state, tx,chainInfo) => {
     if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
