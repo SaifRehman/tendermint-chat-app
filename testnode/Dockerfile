@@ -5,5 +5,5 @@ COPY .env-node3 ./
 COPY www ./
 RUN npm install
 COPY . .
-EXPOSE 30090 30092 7777
+EXPOSE 30090 30092 
 CMD [ "node", "node3.js" ]
