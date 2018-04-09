@@ -7,13 +7,13 @@
     p2pPort: 30092,
     logTendermint: true,
     keys: 'privkey0.json',
-    peers: ['localhost:30093']
+    peers: ['localhost:30096']
   })
   app.use((state, tx,chainInfo) => {
     if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
       state.messages.push({ sender: tx.sender, message: tx.message })
     }
   })
-  app.listen(3000).then(({ GCI }) => {
+  app.listen(3004).then(({ GCI }) => {
     console.log(GCI)
   })
