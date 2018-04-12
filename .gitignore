@@ -1,2 +1,4 @@
 node_modules
 .lotion_node*
+package-lock.json
+.DS_Store

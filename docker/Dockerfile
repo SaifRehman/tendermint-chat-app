@@ -6,5 +6,5 @@ COPY .env-node1 ./
 COPY .env-node2 ./
 RUN npm install
 COPY . .
-EXPOSE 30090 30092
-CMD [ "node", "node1.js"]
+EXPOSE 30090 30092 7777
+CMD [ "node", "test.js"]

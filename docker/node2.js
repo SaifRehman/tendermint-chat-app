@@ -2,9 +2,9 @@ require('dotenv').config({path: ".env-node2"});
 let lotion = require('lotion')
 let app = lotion({
   genesis: './genesis.json',
-  tendermintPort: 30091,
+  tendermintPort: 30095,
   initialState: { messages: [] },
-  p2pPort: 30093,
+  p2pPort: 30096,
   logTendermint: true,
   keys: 'privkey1.json',
   peers: ['localhost:30092']
@@ -14,6 +14,6 @@ app.use((state, tx,chainInfo) => {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.listen(3002).then(({ GCI }) => {
+app.listen(3003).then(({ GCI }) => {
   console.log(GCI)
 })
