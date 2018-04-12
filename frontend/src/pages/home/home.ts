@@ -19,10 +19,10 @@ export class HomePage {
   public con:any;
   constructor(public navCtrl: NavController, public homeService: HomeService, public loadingCtrl: LoadingController) {
     this.senderName = sessionStorage.getItem('name');
-    // this.con = this.loadingCtrl.create({
-    //   content: 'Blockchain Synching ....'
-    // });
-    // this.con.present();
+    this.con = this.loadingCtrl.create({
+      content: 'Blockchain Synching ....'
+    });
+    this.con.present();
   }
 
   ionViewDidLoad() {
@@ -51,16 +51,16 @@ export class HomePage {
         })
     });
 
-    // Observable.interval(5000).subscribe(x => {
-    //   this.homeService.getStatus().subscribe((data) => {
-    //     if (!data['result']['syncing']) {
-    //       this.con.dismiss();
-    //     }
-    //   },
-    //     (error) => {
-    //       console.log(error)
-    //     })
-    // });
+    Observable.interval(5000).subscribe(x => {
+      this.homeService.getStatus().subscribe((data) => {
+        if (!data['result']['syncing']) {
+          this.con.dismiss();
+        }
+      },
+        (error) => {
+          console.log(error)
+        })
+    });
   }
   
   sendMessage() {
