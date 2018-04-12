@@ -2,9 +2,9 @@ require('dotenv').config({path: ".env-node3"});
 let shea = require('shea')
 let lotion = require('lotion')
 let app = lotion({
-  tendermintPort: 30098,
+  tendermintPort: 30090,
   initialState: { messages: [] },
-  p2pPort: 30099
+  p2pPort: 30092
 })
 app.use((state, tx,chainInfo) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {

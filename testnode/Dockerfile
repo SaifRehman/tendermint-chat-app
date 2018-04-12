@@ -6,5 +6,5 @@ COPY node3.js ./
 COPY www ./
 RUN npm install
 COPY . .
-EXPOSE 30098 30099 7777
+EXPOSE 30090 30092 
 CMD [ "node", "node3.js" ]
