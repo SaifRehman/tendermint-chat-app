@@ -52,6 +52,7 @@ export class HomePage {
     });
 
     Observable.interval(5000).subscribe(x => {
+      console.log('getting status')
       this.homeService.getStatus().subscribe((data) => {
         if (!data['result']['syncing']) {
           this.con.dismiss();

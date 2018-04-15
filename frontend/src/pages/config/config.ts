@@ -1,5 +1,5 @@
 export class config {
-    public static baseUrl = "http://localhost:3000";
+    public static baseUrl = "http://localhost:8080";
     public  constructor() {
     }
 }
