@@ -7,7 +7,8 @@ let app = lotion({
   p2pPort: 30092,
   logTendermint: true,
   keys: 'privkey0.json',
-  peers: ['localhost:30098']
+  peers: ['localhost:30098'],
+  createEmptyBlocks: false
 })
 app.use((state, tx,chainInfo) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {

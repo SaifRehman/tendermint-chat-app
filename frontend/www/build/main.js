@@ -360,7 +360,7 @@ var AppModule = (function () {
 var config = (function () {
     function config() {
     }
-    config.baseUrl = "http://localhost:8080";
+    config.baseUrl = "http://tendermint-chat-app.au-syd.mybluemix.net";
     return config;
 }());
 

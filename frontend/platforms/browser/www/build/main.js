@@ -202,10 +202,10 @@ var HomePage = (function () {
         this.senderName = '';
         this.allData = null;
         this.senderName = sessionStorage.getItem('name');
-        // this.con = this.loadingCtrl.create({
-        //   content: 'Blockchain Synching ....'
-        // });
-        // this.con.present();
+        this.con = this.loadingCtrl.create({
+            content: 'Blockchain Synching ....'
+        });
+        this.con.present();
     }
     HomePage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -231,16 +231,16 @@ var HomePage = (function () {
                 console.log(error);
             });
         });
-        // Observable.interval(5000).subscribe(x => {
-        //   this.homeService.getStatus().subscribe((data) => {
-        //     if (!data['result']['syncing']) {
-        //       this.con.dismiss();
-        //     }
-        //   },
-        //     (error) => {
-        //       console.log(error)
-        //     })
-        // });
+        __WEBPACK_IMPORTED_MODULE_3_rxjs_Rx__["Observable"].interval(5000).subscribe(function (x) {
+            console.log('getting status');
+            _this.homeService.getStatus().subscribe(function (data) {
+                if (!data['result']['syncing']) {
+                    _this.con.dismiss();
+                }
+            }, function (error) {
+                console.log(error);
+            });
+        });
     };
     HomePage.prototype.sendMessage = function () {
         var _this = this;
@@ -360,7 +360,7 @@ var AppModule = (function () {
 var config = (function () {
     function config() {
     }
-    config.baseUrl = "http://localhost:3000";
+    config.baseUrl = "http://tendermint-chat-app.au-syd.mybluemix.net";
     return config;
 }());
 
