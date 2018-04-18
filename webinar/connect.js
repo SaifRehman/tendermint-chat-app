@@ -5,7 +5,7 @@ let app = require('lotion')({
   initialState: { messages: [] },
   tendermintPort: 46657,
   logTendermint: true,
-  peers: ['ws://localhost:30092','ws://localhost:30096'],
+  peers: ['ws://localhost:30091','ws://localhost:30093'],
   createEmptyBlocks: false
 })
 app.use((state, tx) => {
@@ -13,6 +13,6 @@ app.use((state, tx) => {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.listen(3009).then(({ GCI }) => {
+app.listen(3002).then(({ GCI }) => {
   console.log(GCI)
 })

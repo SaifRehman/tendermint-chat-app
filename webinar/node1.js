@@ -4,10 +4,10 @@ let app = lotion({
   genesis: './genesis.json',
   tendermintPort: 30090,
   initialState: { messages: [] },
-  p2pPort: 30092,
+  p2pPort: 30091,
   logTendermint: true,
   keys: 'privkey0.json',
-  peers: ['localhost:30098'],
+  peers: ['localhost:30093'],
   createEmptyBlocks: false
 })
 app.use((state, tx,chainInfo) => {
