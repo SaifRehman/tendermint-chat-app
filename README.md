@@ -337,21 +337,21 @@ spec:
 ```
 23. Configure Kubernetes, to create pods, services, and deployments
 ```
-$ kubctl create -f service-deployment.yml
+$ kubectl create -f service-deployment.yml
 ```
 24. delete all deployments
 ```
-$ kubctl delete deployments --all 
+$ kubectl delete deployments --all 
 ```
 25. delete all services
 ```
-$ kubctl delete services --all 
+$ kubectl delete services --all 
 ```
 26. Follow same procesdure with node2 with dofferent name
 27. Access pods and logs
 ```
-$ kubctl get pods
-$ kubctl logs podname
+$ kubectl get pods
+$ kubectl logs podname
 ```
 ### Cook a sexy frontend (Using Ionic <3) and connect with validators to send txs to Blockchain
 1. Install Ionic
