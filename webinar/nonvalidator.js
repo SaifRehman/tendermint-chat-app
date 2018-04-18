@@ -1,5 +1,4 @@
 require('dotenv').config({path: ".env-node3"});
-
 let app = require('lotion')({
   genesis: './genesis.json',
   initialState: { messages: [] },

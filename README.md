@@ -328,12 +328,12 @@ spec:
  ports:
   - protocol: TCP
     name: tendermint1
-    port: 30090  # it shall be 8545 and no other port !!!!!
-    nodePort: 30090  # Give a port to access the application publically
+    port: 30090  
+    nodePort: 30090 
   - protocol: TCP
     name: port
-    port: 30092  # it shall be 8545 and no other port !!!!!
-    nodePort: 30092  # Give a port to access the application publically
+    port: 30092  
+    nodePort: 30092 
 ```
 23. Configure Kubernetes, to create pods, services, and deployments
 ```
