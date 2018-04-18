@@ -13,7 +13,6 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "^5.0.1",
-    "lotion": "^0.1.17",
-    "shea": "0.0.13"
+    "lotion": "^0.1.17"
   }
 }

@@ -1,5 +1,4 @@
 require('dotenv').config({path: ".env-node2"});
-let shea = require('shea')
 let lotion = require('lotion')
 let app = lotion({
   genesis: './genesis.json',
@@ -8,14 +7,14 @@ let app = lotion({
   p2pPort: 30092,
   logTendermint: true,
   keys: 'privkey1.json',
-  peers: ['184.173.1.108:30092']
+  peers: ['184.173.1.108:30092'],
+  createEmptyBlocks: false
 })
 app.use((state, tx,chainInfo) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
     state.messages.push({ sender: tx.sender, message: tx.message })
   }
 })
-app.use(shea('www/'))
 app.listen(3000).then(({ GCI }) => {
   console.log(GCI)
 })
