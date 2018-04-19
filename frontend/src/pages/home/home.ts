@@ -20,10 +20,10 @@ export class HomePage {
   public con:any;
   constructor(public navCtrl: NavController, public homeService: HomeService, public loadingCtrl: LoadingController) {
     this.senderName = sessionStorage.getItem('name');
-    // this.con = this.loadingCtrl.create({
-    //   content: 'Blockchain Synching ....'
-    // });
-    // this.con.present();
+    this.con = this.loadingCtrl.create({
+      content: 'Blockchain Synching ....'
+    });
+    this.con.present();
   }
 
   ionViewDidLoad() {
