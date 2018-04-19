@@ -7,7 +7,7 @@ let app = lotion({
   p2pPort: 30092,
   logTendermint: true,
   keys: 'privkey0.json',
-  peers: ['159.122.175.154:30092'],
+  peers: ['159.122.181.47:30092'],
   createEmptyBlocks: false
 })
 app.use((state, tx,chainInfo) => {

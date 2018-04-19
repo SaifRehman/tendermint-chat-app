@@ -12,7 +12,7 @@ spec:
    spec:
      containers:
        - name: saif1cluster
-         image: "registry.ng.bluemix.net/tendermint1/node1" # your registery name
+         image: "registry.ng.bluemix.net/tendermintnode1/node1:latest" # your registery name
          imagePullPolicy: Always
 ---
 apiVersion: v1
