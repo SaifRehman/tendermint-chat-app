@@ -3,6 +3,7 @@ import { NavController, LoadingController } from 'ionic-angular';
 import { HomeService } from '../home/home.service'
 import { Observable } from 'rxjs/Rx';
 import { Content } from 'ionic-angular';
+let connect = require('lotion-connect')
 
 @Component({
   selector: 'page-home',
@@ -19,16 +20,26 @@ export class HomePage {
   public con:any;
   constructor(public navCtrl: NavController, public homeService: HomeService, public loadingCtrl: LoadingController) {
     this.senderName = sessionStorage.getItem('name');
-    this.con = this.loadingCtrl.create({
-      content: 'Blockchain Synching ....'
-    });
-    this.con.present();
+    // this.con = this.loadingCtrl.create({
+    //   content: 'Blockchain Synching ....'
+    // });
+    // this.con.present();
   }
 
   ionViewDidLoad() {
 
     Observable.interval(4000).subscribe(x => {
-      console.log('get message');
+      // console.log('get message');
+      // async function main() {
+      //   let { state, send } = await connect(null, { 
+      //     genesis: require('./genesis.json'),
+      //     nodes: [ 'ws://184.173.1.108:30090','ws://168.1.149.33:30090' ]
+      //   })
+      //   // console.log(await state)
+      //   // this.allData = temp['messages']
+      //   // console.log(this.allData)
+      // }
+      // main()
       this.homeService.get().subscribe((data) => {
         data = data['messages'].filter(function (n) { return n != null });
         this.allData = data;
@@ -73,5 +84,14 @@ export class HomePage {
         console.log(error)
         this.content = '';
       })
+    // async function main() {
+    //   let { state, send } = await connect(null, { 
+    //     genesis: require('./genesis.json'),
+    //     nodes: [ 'ws://184.173.1.108:30090','ws://168.1.149.33:30090' ]
+    //   })
+    //   console.log(await send({ "sender": 'saif',"message":"himom" }))
+    //   console.log(await state)
+    // }
+    // main()
   }
 }
