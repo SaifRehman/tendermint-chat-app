@@ -263,7 +263,7 @@ let app = require('lotion')({
   initialState: { messages: [] },
   tendermintPort: 46657,
   logTendermint: true,
-  peers: ['ws://159.122.175.154:30092','ws://184.173.1.108:30092']
+  peers: ['ws://159.122.181.47:30092','ws://173.193.85.162:30092']
 })
 app.use((state, tx) => {
   if (typeof tx.sender === 'string' && typeof tx.message === 'string') {
