@@ -1,18 +1,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
- name: tendermintnodetestnode # give any name
+ name: tenderminttestnode # give any name
 spec:
  replicas: 1
  template:
    metadata:
-     name: tendermintnodetestnode
+     name: tenderminttestnode
      labels:
        run: tendermint3
    spec:
      containers:
        - name: saif1cluster
-         image: "registry.au-syd.bluemix.net/tendermint2/testnode3" # your registery name
+         image: "registry.au-syd.bluemix.net/tendermint2/testnode" # your registery name
          imagePullPolicy: Always
 ---
 apiVersion: v1
