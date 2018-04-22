@@ -404,7 +404,7 @@ $ cf push
 | /txs    | POST | {"sender":"","message":""} |
 
 ## Powerpoint Presentation
-![Proof of Stake Webinar](https://ibm.box.com/v/blockchain-webinar-pos)
+[Proof of Stake Webinar](https://ibm.box.com/v/blockchain-webinar-pos)
 
 ## Screenshot of App
 
