@@ -49,7 +49,7 @@ webpackEmptyAsyncContext.id = 248;
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_rxjs_add_observable_throw__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeoutWith__ = __webpack_require__(374);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeoutWith___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5_rxjs_add_operator_timeoutWith__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_config__ = __webpack_require__(776);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_config__ = __webpack_require__(775);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -194,7 +194,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var connect = __webpack_require__(778);
+var connect = __webpack_require__(777);
 var HomePage = (function () {
     function HomePage(navCtrl, homeService, loadingCtrl) {
         this.navCtrl = navCtrl;
@@ -203,10 +203,10 @@ var HomePage = (function () {
         this.senderName = '';
         this.allData = null;
         this.senderName = sessionStorage.getItem('name');
-        // this.con = this.loadingCtrl.create({
-        //   content: 'Blockchain Synching ....'
-        // });
-        // this.con.present();
+        this.con = this.loadingCtrl.create({
+            content: 'Blockchain Synching ....'
+        });
+        this.con.present();
     }
     HomePage.prototype.ionViewDidLoad = function () {
         var _this = this;
@@ -274,29 +274,28 @@ var HomePage = (function () {
     };
     __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* ViewChild */])(__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */]),
-        __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */]) === "function" && _a || Object)
+        __metadata("design:type", __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* Content */])
     ], HomePage.prototype, "contentScroll", void 0);
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
             selector: 'page-home',template:/*ion-inline-start:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/home/home.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-title>\n      {{senderName}}\n    </ion-title>\n    <ion-toggle [(ngModel)]="scroll"></ion-toggle>\n  </ion-navbar>\n</ion-header>\n\n<ion-content class="lightGreen">\n  <ng-container *ngIf="allData"> \n  <ion-card *ngFor="let data of allData ">\n        <ion-card-header>\n          {{data.sender}}\n        </ion-card-header>\n        <ion-card-content>\n          {{data.message}}\n        </ion-card-content>\n      </ion-card>\n      </ng-container>\n</ion-content>\n<ion-footer class="chatPageFooter">\n  <ion-toolbar>\n    <ion-item>\n      <ion-label style="margin:0px;"></ion-label>\n      <div item-content style="width:100%;">\n        <ion-textarea placeholder=\'enter your message\' [(ngModel)]="content" (keyup.enter)="sendMessage()"></ion-textarea>\n      </div>\n    </ion-item>\n    <ion-buttons right>\n      <button style="min-width:45px;" (click)="sendMessage()">\n        <ion-icon name="send"></ion-icon>\n      </button>\n    </ion-buttons>\n  </ion-toolbar>\n</ion-footer>'/*ion-inline-end:"/Users/saifrehman/Desktop/tendermint-chat-app/frontend/src/pages/home/home.html"*/
         }),
-        __metadata("design:paramtypes", [typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */]) === "function" && _c || Object, typeof (_d = typeof __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]) === "function" && _d || Object])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__home_home_service__["a" /* HomeService */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* LoadingController */]])
     ], HomePage);
     return HomePage;
-    var _a, _b, _c, _d;
 }());
 
 //# sourceMappingURL=home.js.map
 
 /***/ }),
 
-/***/ 452:
+/***/ 451:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(453);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(456);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -304,7 +303,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 457:
+/***/ 456:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -315,7 +314,7 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(288);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(293);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__pages_home_home_service__ = __webpack_require__(294);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(777);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__app_component__ = __webpack_require__(776);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pages_home_home__ = __webpack_require__(390);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__pages_login_login__ = __webpack_require__(389);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(388);
@@ -373,7 +372,7 @@ var AppModule = (function () {
 
 /***/ }),
 
-/***/ 776:
+/***/ 775:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -381,7 +380,7 @@ var AppModule = (function () {
 var config = (function () {
     function config() {
     }
-    config.baseUrl = "http://tendermint-chat-app.au-syd.mybluemix.net";
+    config.baseUrl = "http://tendermint-chat-app-new.au-syd.mybluemix.net";
     return config;
 }());
 
@@ -389,7 +388,7 @@ var config = (function () {
 
 /***/ }),
 
-/***/ 777:
+/***/ 776:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -433,40 +432,40 @@ var MyApp = (function () {
 
 /***/ }),
 
-/***/ 812:
+/***/ 811:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 814:
+/***/ 813:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 827:
+/***/ 826:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 839:
+/***/ 838:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ }),
 
-/***/ 876:
+/***/ 875:
 /***/ (function(module, exports) {
 
 /* (ignored) */
 
 /***/ })
 
-},[452]);
+},[451]);
 //# sourceMappingURL=main.js.map
