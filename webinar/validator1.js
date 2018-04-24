@@ -1,13 +1,14 @@
 require('dotenv').config({path: ".env-node1"});
 let lotion = require('lotion')
+// Your blockchain configuration
 let app = lotion({
   genesis: './genesis.json',
   tendermintPort: 30090,
   initialState: { messages: [] },
   p2pPort: 30091,
-  logTendermint: true,
-  keys: 'privkey0.json',
-  peers: ['localhost:30093'],
+  logTendermint: true, // Enable tendermint logs
+  keys: 'privkey0.json', // Your key that has private and public key
+  peers: ['localhost:30093'], // Pears/Validator to connect with  
   createEmptyBlocks: false
 })
 app.use((state, tx,chainInfo) => {
