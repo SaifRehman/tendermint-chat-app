@@ -7,11 +7,12 @@ var bodyParser = require('body-parser');
 expressapp.use(express.static(path.join(__dirname, 'www')));
 expressapp.use(bodyParser.urlencoded({ extended: true }));
 expressapp.use(bodyParser.json());
+expressapp.use(cors())
 
 require('dotenv').config({path: ".env-node1"});
 
 var port = 8080;
-expressapp.get('/abci_info', cors(), function (req, res) {
+expressapp.get('/abci_info', function (req, res) {
   request('http://127.0.0.1:46657/abci_info', function (error, response, body) {
     if (!error) {
       res.json(JSON.parse(body));
@@ -19,7 +20,7 @@ expressapp.get('/abci_info', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/dump_consensus_state', cors(), function (req, res) {
+expressapp.get('/dump_consensus_state', function (req, res) {
   request('http://127.0.0.1:46657/dump_consensus_state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -27,7 +28,7 @@ expressapp.get('/dump_consensus_state', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/genesis', cors(), function (req, res) {
+expressapp.get('/genesis', function (req, res) {
   request('http://127.0.0.1:46657/genesis', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -35,7 +36,7 @@ expressapp.get('/genesis', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/net_info', cors(), function (req, res) {
+expressapp.get('/net_info', function (req, res) {
   request('http://127.0.0.1:46657/net_info', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -43,7 +44,7 @@ expressapp.get('/net_info', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/num_unconfirmed_txs', cors(), function (req, res) {
+expressapp.get('/num_unconfirmed_txs', function (req, res) {
   request('http://127.0.0.1:46657/num_unconfirmed_txs', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -51,7 +52,7 @@ expressapp.get('/num_unconfirmed_txs', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/status', cors(), function (req, res) {
+expressapp.get('/status', function (req, res) {
   request('http://127.0.0.1:46657/status', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -59,7 +60,7 @@ expressapp.get('/status', cors(), function (req, res) {
   })
 });
 
-expressapp.get('/unconfirmed_txs', cors(), function (req, res) {
+expressapp.get('/unconfirmed_txs', function (req, res) {
   request('http://127.0.0.1:46657/unconfirmed_txs', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -67,7 +68,7 @@ expressapp.get('/unconfirmed_txs', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/abci_query', cors(), function (req, res) {
+expressapp.post('/abci_query', function (req, res) {
   var path = req.body.path;
   var data = req.body.data;
   var height = req.body.height;
@@ -92,7 +93,7 @@ expressapp.post('/abci_query', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/block', cors(), function (req, res) {
+expressapp.post('/block', function (req, res) {
   var height = req.body.height;
   var link = "http://127.0.0.1:46657/block?"
   if(height !== undefined && height!==null){
@@ -105,7 +106,7 @@ expressapp.post('/block', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/block_results', cors(), function (req, res) {
+expressapp.post('/block_results', function (req, res) {
   var height = req.body.height;
   var link = "http://127.0.0.1:46657/block_results?"
   if(height !== undefined && height!==null){
@@ -118,7 +119,7 @@ expressapp.post('/block_results', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/blockchain', cors(), function (req, res) {
+expressapp.post('/blockchain', function (req, res) {
   var minHeight = req.body.minHeight;
   var maxHeight = req.body.maxHeight;
   var link = "http://127.0.0.1:46657/blockchain?"
@@ -136,7 +137,7 @@ expressapp.post('/blockchain', cors(), function (req, res) {
 });
 
 
-expressapp.post('/broadcast_tx_async', cors(), function (req, res) {
+expressapp.post('/broadcast_tx_async', function (req, res) {
   var tx = req.body.tx;
   var link = "http://127.0.0.1:46657/broadcast_tx_async?"
   if(tx !== undefined && tx!==null){
@@ -149,7 +150,7 @@ expressapp.post('/broadcast_tx_async', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/broadcast_tx_commit', cors(), function (req, res) {
+expressapp.post('/broadcast_tx_commit', function (req, res) {
   var tx = req.body.tx;
   var link = "http://127.0.0.1:46657/broadcast_tx_commit?"
   if(tx !== undefined && tx!==null){
@@ -162,7 +163,7 @@ expressapp.post('/broadcast_tx_commit', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/broadcast_tx_sync', cors(), function (req, res) {
+expressapp.post('/broadcast_tx_sync', function (req, res) {
   var tx = req.body.tx;
   var link = "http://127.0.0.1:46657/broadcast_tx_sync?"
   if(tx !== undefined && tx!==null){
@@ -175,7 +176,7 @@ expressapp.post('/broadcast_tx_sync', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/commit', cors(), function (req, res) {
+expressapp.post('/commit', function (req, res) {
   var height = req.body.height;
   var link = "http://127.0.0.1:46657/commit?"
   if(height !== undefined && height!==null){
@@ -188,7 +189,7 @@ expressapp.post('/commit', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/subscribe', cors(), function (req, res) {
+expressapp.post('/subscribe', function (req, res) {
   var query = req.body.query;
   var link = "http://127.0.0.1:46657/subscribe?"
   if(query !== undefined && query!==null){
@@ -201,7 +202,7 @@ expressapp.post('/subscribe', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/tx', cors(), function (req, res) {
+expressapp.post('/tx', function (req, res) {
   var hash = req.body.hash;
   var prove = req.body.prove;
   var link = "http://127.0.0.1:46657/tx?"
@@ -218,7 +219,7 @@ expressapp.post('/tx', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/tx_search', cors(), function (req, res) {
+expressapp.post('/tx_search', function (req, res) {
   var query = req.body.query;
   var prove = req.body.prove;
   var link = "http://127.0.0.1:46657/tx_search?"
@@ -236,7 +237,7 @@ expressapp.post('/tx_search', cors(), function (req, res) {
 });
 
 
-expressapp.get('/state', cors(), function (req, res) {
+expressapp.get('/state', function (req, res) {
   request('http://127.0.0.1:3000/state', function (error, response, body) {
     if (!error && response.statusCode == 200) {
       res.json(JSON.parse(body));
@@ -244,7 +245,7 @@ expressapp.get('/state', cors(), function (req, res) {
   })
 });
 
-expressapp.post('/txs', cors(), function (req, res) {
+expressapp.post('/txs', function (req, res) {
   var sender = req.body.sender;
   var message = req.body.message;
   var myJSONObject = { "sender": sender, "message": message };
