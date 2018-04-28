@@ -4,6 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
+    "start":"node node1.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "node app.js",
     "validator": "PRODUCTION=true node app.js"
